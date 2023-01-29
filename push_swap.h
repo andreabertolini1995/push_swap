@@ -17,26 +17,27 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include "./libft/libft.h"
+# include "./ft_printf/ft_printf.h"
 
-int		ft_printf(const char *str, ...);
+typedef struct s_stack
+{
+	int				data;
+	struct s_stack	*next;
+}	t_stack;
 
-int		ft_putstr_count(char *s);
-int		ft_putchar_count(char c);
-int		ft_putnbr_count(int n);
-int		ft_putunbr_count(unsigned int n);
-int		ft_putaddr_count(void *n);
+void    ft_stackadd_back(t_stack *lst, t_stack *new);
+void	ft_stackadd_front(t_stack *lst, t_stack *new);
+t_stack	*ft_stacklast(t_stack *lst);
+t_stack *ft_stacksecondbutlast(t_stack *lst);
+t_stack	*ft_stacknew(int data);
+int		ft_stacksize(t_stack *lst);
 
-int		ft_puthex_count_int(int n, char *letter_size, int binary_size);
-int		ft_puthex_count_ulong(unsigned long n,
-			char *letter_size, int binary_size);
-
-size_t	ft_strlen(const char *str);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-
-int		*ft_dec_to_binary(int n, int binary_size);
-void	ft_invert_binary(int *binary, int binary_size);
-int		*ft_add_one_binary(int *binary, int binary_size);
-int		ft_iterative_power(int nb, int power);
+t_stack *swap(t_stack *stack);
+t_stack *remove_first_node(t_stack *stack);
+t_stack *push_add(t_stack *stack_a, t_stack *stack_b);
+t_stack *rotate(t_stack *stack);
+t_stack *reverse_rotate(t_stack *stack);
 
 int     main(int argc, char **argv);
 

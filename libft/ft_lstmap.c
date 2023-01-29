@@ -10,36 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static void    fill_stack_a(t_stack *stack_a, int argc, char **argv)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-    int i;
+	t_list	*first;
+	t_list	*tmp;
+	t_list	*useless;
 
-    i = 1;
-    while (i < argc)
-    {
-        ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(argv[i])));
-        i++;
-    }
-}
-
-int main(int argc, char **argv)
-{
-    t_stack *stack_a;
-    t_stack *stack_b;
-
-    if (argc == 1)
-        exit(0);
-    else
-    {
-        stack_a = ft_stacknew(ft_atoi(argv[0]));
-        stack_b = NULL;
-        fill_stack_a(stack_a, argc, argv);
-    }
-    stack_a = swap(stack_a);
-    stack_a = rotate(stack_a);
-    stack_a = reverse_rotate(stack_a);
-    stack_a = remove_first_node(stack_a);
-    stack_b = push_add(stack_a, stack_b);
+	useless = NULL;
+	first = NULL;
+	while (lst != NULL)
+	{
+		tmp = ft_lstnew((*f)(lst->content));
+		ft_lstadd_back(&first, tmp);
+		lst = lst->next;
+	}
+	(*del)(useless);
+	return (first);
 }

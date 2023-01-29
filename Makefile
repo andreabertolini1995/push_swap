@@ -1,6 +1,10 @@
 NAME = push_swap
 
-SOURCES = ft_printf.c ft_puthex_count_int.c ft_puthex_count_ulong.c ft_put.c ft_strlen.c ft_strncmp.c ft_utils.c main.c
+SOURCES = ft_stack_utils.c main.c
+
+PRINTF = ft_printf/ft_printf.a
+
+LIBFT = libft/libft.a
 
 OBJS = $(SOURCES:.c=.o)
 
@@ -10,7 +14,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)	
 
-$(NAME): $(OBJS)
+$(NAME): $(PRINTF) $(LIBFT) $(OBJS)
 	ar crs $(NAME) $(OBJS)
 
 clean:

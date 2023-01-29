@@ -10,36 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static void    fill_stack_a(t_stack *stack_a, int argc, char **argv)
+void	ft_putnbr_fd(int n, int fd)
 {
-    int i;
-
-    i = 1;
-    while (i < argc)
-    {
-        ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(argv[i])));
-        i++;
-    }
-}
-
-int main(int argc, char **argv)
-{
-    t_stack *stack_a;
-    t_stack *stack_b;
-
-    if (argc == 1)
-        exit(0);
-    else
-    {
-        stack_a = ft_stacknew(ft_atoi(argv[0]));
-        stack_b = NULL;
-        fill_stack_a(stack_a, argc, argv);
-    }
-    stack_a = swap(stack_a);
-    stack_a = rotate(stack_a);
-    stack_a = reverse_rotate(stack_a);
-    stack_a = remove_first_node(stack_a);
-    stack_b = push_add(stack_a, stack_b);
+	if (n == -2147483648)
+		write(fd, "-2147483648", 11);
+	else if (n >= 0 && n < 10)
+	{
+		ft_putchar_fd(n + 48, fd);
+	}
+	else if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd((n % 10) + 48, fd);
+	}
+	else if (n < 0)
+	{
+		ft_putchar_fd(45, fd);
+		ft_putnbr_fd(-n, fd);
+	}
 }

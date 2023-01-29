@@ -10,36 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-static void    fill_stack_a(t_stack *stack_a, int argc, char **argv)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-    int i;
+	int		i;
 
-    i = 1;
-    while (i < argc)
-    {
-        ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(argv[i])));
-        i++;
-    }
-}
-
-int main(int argc, char **argv)
-{
-    t_stack *stack_a;
-    t_stack *stack_b;
-
-    if (argc == 1)
-        exit(0);
-    else
-    {
-        stack_a = ft_stacknew(ft_atoi(argv[0]));
-        stack_b = NULL;
-        fill_stack_a(stack_a, argc, argv);
-    }
-    stack_a = swap(stack_a);
-    stack_a = rotate(stack_a);
-    stack_a = reverse_rotate(stack_a);
-    stack_a = remove_first_node(stack_a);
-    stack_b = push_add(stack_a, stack_b);
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	if (dest > src)
+	{
+		i = (int) n - 1;
+		while (i >= 0)
+		{
+			((char *) dest)[i] = ((char *) src)[i];
+			i--;
+		}
+	}
+	else
+	{
+		i = 0;
+		while (i < (int) n)
+		{
+			((char *) dest)[i] = ((char *) src)[i];
+			i++;
+		}
+	}
+	return (dest);
 }

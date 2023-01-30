@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror
 all: $(NAME)	
 
 $(NAME): $(PRINTF) $(LIBFT) $(OBJS)
-	ar crs $(NAME) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(PRINTF) $(LIBFT) -o $(NAME) 
 
 clean:
 	$(RM) $(OBJS)

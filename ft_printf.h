@@ -10,32 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-static void    fill_stack_a(t_stack *stack_a, int argc, char **argv)
-{
-    int i;
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <limits.h>
 
-    i = 2;
-    while (i < argc)
-    {
-        ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(argv[i])));
-        i++;
-    }
-}
+int		ft_printf(const char *str, ...);
 
-int main(int argc, char **argv)
-{
-    t_stack *stack_a;
-    t_stack *stack_b;
+int		ft_putstr_count(char *s);
+int		ft_putchar_count(char c);
+int		ft_putnbr_count(int n);
+int		ft_putunbr_count(unsigned int n);
+int		ft_putaddr_count(void *n);
 
-    if (argc == 1)
-        exit(0);
-    else
-    {
-        stack_a = ft_stacknew(ft_atoi(argv[1]));
-        stack_b = NULL;
-        fill_stack_a(stack_a, argc, argv);
-    }
-    stack_a = sort_stack(stack_a, stack_b);
-}
+int		ft_puthex_count_int(int n, char *letter_size, int binary_size);
+int		ft_puthex_count_ulong(unsigned long n,
+			char *letter_size, int binary_size);
+
+size_t	ft_strlen(const char *str);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
+int		*ft_dec_to_binary(int n, int binary_size);
+void	ft_invert_binary(int *binary, int binary_size);
+int		*ft_add_one_binary(int *binary, int binary_size);
+int		ft_iterative_power(int nb, int power);
+
+#endif

@@ -32,7 +32,7 @@ t_stack    *ft_stacksecondbutlast(t_stack *lst)
 
     if (lst == NULL)
         second_but_last_node = NULL;
-    while (lst != NULL && lst->next != NULL)
+    while (lst->next != NULL)
     {
         second_but_last_node = lst;
         lst = lst->next;
@@ -81,7 +81,7 @@ void    ft_stackadd_back(t_stack *lst, t_stack *new)
     }
 }
 
-void	ft_stackadd_front(t_stack *lst, t_stack *new)
+t_stack	*ft_stackadd_front(t_stack *lst, t_stack *new)
 {
 	if (lst != NULL)
 	{
@@ -89,4 +89,5 @@ void	ft_stackadd_front(t_stack *lst, t_stack *new)
 			new->next = lst;
 		lst = new;
 	}
+	return (lst);
 }

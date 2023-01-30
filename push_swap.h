@@ -19,6 +19,7 @@
 # include <limits.h>
 # include "./libft/libft.h"
 # include "./ft_printf/ft_printf.h"
+# include <stdio.h>
 
 typedef struct s_stack
 {
@@ -27,7 +28,7 @@ typedef struct s_stack
 }	t_stack;
 
 void    ft_stackadd_back(t_stack *lst, t_stack *new);
-void	ft_stackadd_front(t_stack *lst, t_stack *new);
+t_stack	*ft_stackadd_front(t_stack *lst, t_stack *new);
 t_stack	*ft_stacklast(t_stack *lst);
 t_stack *ft_stacksecondbutlast(t_stack *lst);
 t_stack	*ft_stacknew(int data);
@@ -35,10 +36,19 @@ int		ft_stacksize(t_stack *lst);
 
 t_stack *swap(t_stack *stack);
 t_stack *remove_first_node(t_stack *stack);
-t_stack *push_add(t_stack *stack_a, t_stack *stack_b);
+t_stack *push(t_stack *stack_a, t_stack *stack_b);
 t_stack *rotate(t_stack *stack);
 t_stack *reverse_rotate(t_stack *stack);
 
+// void swap(t_stack *stack);
+// void remove_first_node(t_stack *stack);
+// void push(t_stack *stack_a, t_stack *stack_b);
+// void rotate(t_stack *stack);
+// t_stack *reverse_rotate(t_stack *stack);
+
+t_stack *multiple_rotations(t_stack *stack_a, int *arr, int chunk_size, int size);
+t_stack *sort_stack(t_stack *stack_a, t_stack *stack_b);
+t_stack *check_chunk(t_stack *stack_a, int chunk_threshold, int malloc_size);
 int     main(int argc, char **argv);
 
 #endif

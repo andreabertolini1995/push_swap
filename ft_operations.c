@@ -33,7 +33,7 @@ t_stack    *remove_first_node(t_stack *stack)
     return(stack);
 }
 
-t_stack    *push_add(t_stack *stack_a, t_stack *stack_b)
+t_stack    *push(t_stack *stack_a, t_stack *stack_b)
 {
     int     size;
   
@@ -41,15 +41,14 @@ t_stack    *push_add(t_stack *stack_a, t_stack *stack_b)
     if (size == 0)
         stack_b = ft_stacknew(stack_a->data);
     else
-        ft_stackadd_front(stack_b, ft_stacknew(stack_a->data));
+        stack_b = ft_stackadd_front(stack_b, ft_stacknew(stack_a->data));
     return(stack_b);
 }
 
 t_stack    *rotate(t_stack *stack)
 {
-    
     ft_stackadd_back(stack, ft_stacknew(stack->data));
-    stack = remove_first_node(stack);
+    remove_first_node(stack);
     return (stack);
 }
 
@@ -61,7 +60,7 @@ t_stack    *reverse_rotate(t_stack *stack)
     last_node = ft_stacklast(stack);
     second_but_last_node = ft_stacksecondbutlast(stack);
     second_but_last_node->next = NULL;
-    ft_stackadd_front(stack, last_node);
-    stack = last_node;
+    stack = ft_stackadd_front(stack, last_node);
+    // stack = last_node;
     return (stack);
 }

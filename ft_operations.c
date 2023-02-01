@@ -48,7 +48,7 @@ t_stack    *push(t_stack *stack_a, t_stack *stack_b)
 t_stack    *rotate(t_stack *stack)
 {
     ft_stackadd_back(stack, ft_stacknew(stack->data));
-    remove_first_node(stack);
+    stack = remove_first_node(stack);
     return (stack);
 }
 

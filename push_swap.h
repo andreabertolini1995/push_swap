@@ -27,28 +27,52 @@ typedef struct s_stack
 	struct s_stack	*next;
 }	t_stack;
 
-void    ft_stackadd_back(t_stack *lst, t_stack *new);
-t_stack	*ft_stackadd_front(t_stack *lst, t_stack *new);
+// Stack utils
+void	ft_stackadd_back(t_stack **lst, t_stack *new);
+void	ft_stackadd_front(t_stack **lst, t_stack *new);
 t_stack	*ft_stacklast(t_stack *lst);
 t_stack *ft_stacksecondbutlast(t_stack *lst);
 t_stack	*ft_stacknew(int data);
 int		ft_stacksize(t_stack *lst);
 
-t_stack *swap(t_stack *stack);
-t_stack *remove_first_node(t_stack *stack);
-t_stack *push(t_stack *stack_a, t_stack *stack_b);
-t_stack *rotate(t_stack *stack);
-t_stack *reverse_rotate(t_stack *stack);
+// Operations allowed
+void    swap(t_stack **stack);
+void    remove_first_node(t_stack **stack);
+void    push(t_stack **src, t_stack **dest);
+void    rotate(t_stack **stack);
+void    reverse_rotate(t_stack **stack);
 
-// void swap(t_stack *stack);
-// void remove_first_node(t_stack *stack);
-// void push(t_stack *stack_a, t_stack *stack_b);
-// void rotate(t_stack *stack);
-// t_stack *reverse_rotate(t_stack *stack);
+// Print functions (to delete before submission)
+void    ft_print_stack_stats(t_stack *stack_a, t_stack *stack_b);
+void    ft_print_list_data(t_stack *stack);
+void    ft_print_array(int *arr, int malloc_size);
+void    ft_print_rotations(int rotations_stack_a, int rev_rotations_stack_a, int rotations_stack_b, int rev_rotations_stack_b);
 
-t_stack *multiple_rotations(t_stack *stack_a, int *arr, int chunk_size, int size);
-t_stack *sort_stack(t_stack *stack_a, t_stack *stack_b);
-t_stack *check_chunk(t_stack *stack_a, int chunk_threshold, int malloc_size);
+// Rotations and reverse rotations functions
+int		calc_num_rotations_stack_a(t_stack **stack_a, int size, int number_to_push);
+int 	calc_num_rev_rotations_stack_a(int size, int rotations);
+int		calc_num_rotations_stack_b(int number_to_push, int highest_lower, t_stack **stack_b);
+int		calc_num_rev_rotations_stack_b(int number_to_push, int highest_lower, t_stack **stack_b);
+
+// Operations in list
+int 	ft_max_in_list(t_stack *stack);
+int 	ft_min_in_list(t_stack *stack);
+int 	find_number_to_push(t_stack *stack_a, int *arr, int malloc_size, int size);
+int 	ft_highest_lower(int n, t_stack *stack_b);
+int 	find_position_in_list(t_stack *stack, int n);
+void    put_higher_on_top(t_stack **stack_b);
+void    push_everything_back(t_stack **stack_a, t_stack **stack_b);
+int		ft_max(int a, int b);
+int		ft_min(int a, int b);
+
+// Cases
+void    only_rotations(t_stack **stack_a, t_stack **stack_b, int rotations_stack_a, int rotations_stack_b);
+void	only_reverse_rotations(t_stack **stack_a, t_stack **stack_b, int rev_rotations_stack_a, int rev_rotations_stack_b);
+void    rotations_a_rev_rotations_b(t_stack **stack_a, t_stack **stack_b, int rotations_stack_a, int rev_rotations_stack_b);
+void    rotations_b_rev_rotations_a(t_stack **stack_a, t_stack **stack_b, int rev_rotations_stack_a, int rotations_stack_b);
+
+// Main and main function
+void    sort_stack(t_stack **stack_a, t_stack **stack_b, int initial_size);
 int     main(int argc, char **argv);
 
 #endif

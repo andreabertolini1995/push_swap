@@ -12,55 +12,50 @@
 
 #include "push_swap.h"
 
-t_stack    *swap(t_stack *stack)
+void    swap(t_stack **stack)
 {
     t_stack *tmp;
 
-    tmp = stack->next;
-    stack->next = stack->next->next;
-    tmp->next = stack;
-    stack = tmp;
-    return(stack);
+    tmp = (*stack)->next;
+    (*stack)->next = (*stack)->next->next;
+    tmp->next = *stack;
+    *stack = tmp;
 }
 
-t_stack    *remove_first_node(t_stack *stack)
+void    remove_first_node(t_stack **stack)
 {
     t_stack *first_node;
     
-    first_node = stack;
-    stack = stack->next;
+    first_node = *stack;
+    *stack = (*stack)->next;
     free(first_node);
-    return(stack);
 }
 
-t_stack    *push(t_stack *stack_a, t_stack *stack_b)
+void    push(t_stack **src, t_stack **dest)
 {
     int     size;
   
-    size = ft_stacksize(stack_b);
+    size = ft_stacksize(*dest);
     if (size == 0)
-        stack_b = ft_stacknew(stack_a->data);
+        *dest = ft_stacknew((*src)->data);
     else
-        stack_b = ft_stackadd_front(stack_b, ft_stacknew(stack_a->data));
-    return(stack_b);
+        ft_stackadd_front(dest, ft_stacknew((*src)->data));
+    remove_first_node(src);
 }
 
-t_stack    *rotate(t_stack *stack)
+void    rotate(t_stack **stack)
 {
-    ft_stackadd_back(stack, ft_stacknew(stack->data));
-    stack = remove_first_node(stack);
-    return (stack);
+    ft_stackadd_back(stack, ft_stacknew((*stack)->data));
+    remove_first_node(stack);
 }
 
-t_stack    *reverse_rotate(t_stack *stack)
+void    reverse_rotate(t_stack **stack)
 {    
     t_stack *last_node;
     t_stack *second_but_last_node;
     
-    last_node = ft_stacklast(stack);
-    second_but_last_node = ft_stacksecondbutlast(stack);
+    last_node = ft_stacklast(*stack);
+    second_but_last_node = ft_stacksecondbutlast(*stack);
     second_but_last_node->next = NULL;
-    stack = ft_stackadd_front(stack, last_node);
-    // stack = last_node;
-    return (stack);
+    ft_stackadd_front(stack, last_node);
 }

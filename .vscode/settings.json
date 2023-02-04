@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.ejs": "html",
+    "push_swap.h": "c",
+    "__locale": "c"
+  }
+}

@@ -19,7 +19,7 @@ static void    fill_stack_a(t_stack *stack_a, int argc, char **argv)
     i = 2;
     while (i < argc)
     {
-        ft_stackadd_back(stack_a, ft_stacknew(ft_atoi(argv[i])));
+        ft_stackadd_back(&stack_a, ft_stacknew(ft_atoi(argv[i])));
         i++;
     }
 }
@@ -37,5 +37,5 @@ int main(int argc, char **argv)
         stack_b = NULL;
         fill_stack_a(stack_a, argc, argv);
     }
-    stack_a = sort_stack(stack_a, stack_b);
+    sort_stack(&stack_a, &stack_b, ft_stacksize(stack_a));
 }

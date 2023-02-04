@@ -65,29 +65,28 @@ int	ft_stacksize(t_stack *lst)
 	return (count);
 }
 
-void    ft_stackadd_back(t_stack *lst, t_stack *new)
+void	ft_stackadd_back(t_stack **lst, t_stack *new)
 {
-    t_stack    *last_node;
+	t_stack	*last_node;
 
-    if ((lst) == NULL)
-    {
-        new->next = NULL;
-        lst = new;
-    }
-    else
-    {
-        last_node = ft_stacklast(lst);
-        last_node->next = new;
-    }
+	if ((*lst) == NULL)
+	{
+		new->next = NULL;
+		*lst = new;
+	}
+	else
+	{
+		last_node = ft_stacklast(*lst);
+		last_node->next = new;
+	}
 }
 
-t_stack	*ft_stackadd_front(t_stack *lst, t_stack *new)
+void	ft_stackadd_front(t_stack **lst, t_stack *new)
 {
 	if (lst != NULL)
 	{
-		if (lst != NULL)
-			new->next = lst;
-		lst = new;
+		if (*lst != NULL)
+			new->next = *lst;
+		*lst = new;
 	}
-	return (lst);
 }

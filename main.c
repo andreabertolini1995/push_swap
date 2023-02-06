@@ -24,11 +24,32 @@ static void    fill_stack_a(t_stack *stack_a, int argc, char **argv)
     }
 }
 
+static void    transform_stack(t_stack **stack_a)
+{
+    int     tmp_min;
+    int     new_min;
+    int     i;
+
+    i = 1;
+    tmp_min = ft_min_in_list(*stack_a);
+    replace_data_in_list(stack_a, find_position_in_list(*stack_a, tmp_min), i);
+    i++;
+    while (i <= ft_stacksize(*stack_a))
+    {
+        new_min = ft_tmp_min_in_list(*stack_a, tmp_min);
+        tmp_min = new_min;
+        replace_data_in_list(stack_a, find_position_in_list(*stack_a, tmp_min), i);
+        i++;
+    }
+}
+
 int main(int argc, char **argv)
 {
     t_stack *stack_a;
     t_stack *stack_b;
+    int     chunk_size;
 
+    chunk_size = 20;
     if (argc == 1)
         exit(0);
     else
@@ -37,5 +58,6 @@ int main(int argc, char **argv)
         stack_b = NULL;
         fill_stack_a(stack_a, argc, argv);
     }
-    sort_stack(&stack_a, &stack_b, ft_stacksize(stack_a));
+    transform_stack(&stack_a);
+    sort_stack(&stack_a, &stack_b, ft_stacksize(stack_a), chunk_size);
 }

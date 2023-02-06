@@ -129,15 +129,13 @@ static void    push_chunks(t_stack **stack_a, t_stack **stack_b, int malloc_size
         rotate_or_reverse_rotate(stack_a, stack_b, number_to_push, highest_lower);
 }
 
-void    sort_stack(t_stack **stack_a, t_stack **stack_b, int initial_size)
+void    sort_stack(t_stack **stack_a, t_stack **stack_b, int initial_size, int chunk_size)
 {
-    int chunk_size;
     int num_chunks;
     int chunk_threshold;
     int malloc_size;
 
     g = 0;
-    chunk_size = 20; 
     num_chunks = initial_size / chunk_size; 
     chunk_threshold = chunk_size;
     while (num_chunks > 0)
@@ -165,9 +163,9 @@ Current status:
 - the algorithm works for any size of the list (tried 500) - around 50 I found the best chunks size but would be nice to come up with a formula
 
 Next steps:
-- make the algorithm work for anytipe of set
-- try to come up with a formula (?) to understand the best number of chunks (this part can be hardcoded)
+- make the algorithm work for anytipe of set - TO CHECK, but it should work
+- try to come up with a formula (?) to understand the best number of chunks (this part can be hardcoded) (it should be a curve - maybe use Chat GPT)
 - use the checker
-- use thr visualizer
+- use the visualizer
 - write the function to handle 1, 3, 5 numbers stacks
 */

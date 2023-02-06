@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int g;
+extern int g;
 
 void    only_rotations(t_stack **stack_a, t_stack **stack_b, int rotations_stack_a, int rotations_stack_b)
 {

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int g;
+extern int g;
 
 void    ft_print_stack_stats(t_stack *stack_a, t_stack *stack_b)
 {

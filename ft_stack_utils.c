@@ -26,18 +26,18 @@ t_stack	*ft_stacklast(t_stack *lst)
 	return (last_node);
 }
 
-t_stack    *ft_stacksecondbutlast(t_stack *lst)
+t_stack	*ft_stacksecondbutlast(t_stack *lst)
 {
-    t_stack    *second_but_last_node;
+	t_stack	*second_but_last_node;
 
-    if (lst == NULL)
-        second_but_last_node = NULL;
-    while (lst->next != NULL)
-    {
-        second_but_last_node = lst;
-        lst = lst->next;
-    }
-    return (second_but_last_node);
+	if (lst == NULL)
+		second_but_last_node = NULL;
+	while (lst->next != NULL)
+	{
+		second_but_last_node = lst;
+		lst = lst->next;
+	}
+	return (second_but_last_node);
 }
 
 t_stack	*ft_stacknew(int data)

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	g;
+extern int	g;
 
 static void	multiple_rotations(t_stack **stack_a, int *arr, int malloc_size, int size)
 {
@@ -145,8 +145,6 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b, int initial_size, int chun
 	}
 	put_higher_on_top(stack_b);
 	push_everything_back(stack_a, stack_b);
-	ft_print_stack_stats(*stack_a, *stack_b);
-	ft_print_list_data(*stack_a);
 }
 
 /*

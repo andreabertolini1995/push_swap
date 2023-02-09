@@ -74,6 +74,11 @@ void	only_reverse_rotations(t_stack **stack_a, t_stack **stack_b, int rev_rotati
 void	rotations_a_rev_rotations_b(t_stack **stack_a, t_stack **stack_b, int rotations_stack_a, int rev_rotations_stack_b);
 void	rotations_b_rev_rotations_a(t_stack **stack_a, t_stack **stack_b, int rev_rotations_stack_a, int rotations_stack_b);
 
+// Sort three and sort five functions
+void	sort_three(t_stack **stack_a);
+void find_min_and_push(t_stack **stack_a, t_stack **stack_b, int pos_min);
+void	sort_five(t_stack **stack_a, t_stack **stack_b);
+
 // Main and main function
 void	sort_stack(t_stack **stack_a, t_stack **stack_b, int initial_size, int chunk_size);
 int		main(int argc, char **argv);

@@ -12,6 +12,8 @@
 
 #include "push_swap.h"
 
+int g;
+
 static void	fill_stack_a(t_stack *stack_a, int argc, char **argv)
 {
 	int	i;
@@ -43,39 +45,13 @@ static void	transform_stack(t_stack **stack_a)
 	}
 }
 
-static void	sort_three(t_stack **stack_a)
-{
-	int	pos_min;
-	int	pos_max;
-
-	pos_min = find_position_in_list(*stack_a, ft_min_in_list(*stack_a));
-	pos_max = find_position_in_list(*stack_a, ft_max_in_list(*stack_a));
-	if ((pos_min == 1 && pos_max == 2) || (pos_min == 2 && pos_max == 0)
-		|| (pos_min == 0 && pos_max == 1))
-	{
-		swap(stack_a);
-		ft_printf("sa\n");
-		sort_three(stack_a);
-	}
-	else if (pos_min == 1 && pos_max == 0)
-	{
-		rotate(stack_a);
-		ft_printf("ra\n");
-	}
-	else if (pos_min == 2 && pos_max == 1)
-	{
-		reverse_rotate(stack_a);
-		ft_printf("rra\n");
-	}
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
 	int		chunk_size;
 
-	chunk_size = 20;
+	chunk_size = 1;
 	if (argc == 1)
 		exit(0);
 	else
@@ -85,11 +61,14 @@ int	main(int argc, char **argv)
 		fill_stack_a(stack_a, argc, argv);
 		if (argc == 4)
 			sort_three(&stack_a);
+		else if (argc == 6)
+			sort_five(&stack_a, &stack_b);
 		else
 		{
 			transform_stack(&stack_a);
 			sort_stack(&stack_a, &stack_b, ft_stacksize(stack_a), chunk_size);
 		}
 	}
+	ft_print_stack_stats(stack_a, stack_b);
 	ft_print_list_data(stack_a);
 }

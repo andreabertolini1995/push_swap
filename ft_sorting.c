@@ -148,15 +148,7 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b, int initial_size, int chun
 }
 
 /*
-Current status:
-- the algorithm seems to work with 100 numbers from 1 to 100, most of the times the number of operations is below 700 but sometimes it exceeds (never above 800 in my tests)
-- with a set of 100 random numbers it still does not work - there are some hardcoded values that need to be changed and make more dyamic
-- try with different number of chunks - DONE, for 100 numbers 5 chunks seems to be the best
-- also, it seems that the code does not complain if I insert a number of chunks not perfectly divisible by the size of the stack (not always true actually)
-- the algorithm works for any size of the list (tried 500) - around 50 I found the best chunks size but would be nice to come up with a formula
-
 Next steps:
-- make the algorithm work for anytipe of set - TO CHECK, but it should work
 - try to come up with a formula (?) to understand the best number of chunks (this part can be hardcoded) (it should be a curve - maybe use Chat GPT)
 - use the checker
 - use the visualizer

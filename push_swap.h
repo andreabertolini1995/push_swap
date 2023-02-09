@@ -76,8 +76,9 @@ void	rotations_b_rev_rotations_a(t_stack **stack_a, t_stack **stack_b, int rev_r
 
 // Sort three and sort five functions
 void	sort_three(t_stack **stack_a);
-void find_min_and_push(t_stack **stack_a, t_stack **stack_b, int pos_min);
+void	find_min_and_push(t_stack **stack_a, t_stack **stack_b, int pos_min);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
+void	sort_two(t_stack **stack_a);
 
 // Main and main function
 void	sort_stack(t_stack **stack_a, t_stack **stack_b, int initial_size, int chunk_size);

@@ -52,14 +52,16 @@ int	main(int argc, char **argv)
 	int		chunk_size;
 
 	chunk_size = 1;
-	if (argc == 1)
+	if (argc == 1 || argc == 2)
 		exit(0);
 	else
 	{
 		stack_a = ft_stacknew(ft_atoi(argv[1]));
 		stack_b = NULL;
 		fill_stack_a(stack_a, argc, argv);
-		if (argc == 4)
+		if (argc == 3)
+			sort_two(&stack_a);
+		else if (argc == 4)
 			sort_three(&stack_a);
 		else if (argc == 6)
 			sort_five(&stack_a, &stack_b);

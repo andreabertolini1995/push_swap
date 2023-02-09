@@ -88,3 +88,13 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	sort_three(stack_a);
 	push_everything_back(stack_a, stack_b);
 }
+
+void    sort_two(t_stack **stack_a)
+{
+    if ((*stack_a)->data > (*stack_a)->next->data)
+	{
+		swap(stack_a);
+		g++;
+		ft_printf("sa\n");
+	}
+}

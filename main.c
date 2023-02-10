@@ -71,6 +71,6 @@ int	main(int argc, char **argv)
 			sort_stack(&stack_a, &stack_b, ft_stacksize(stack_a), chunk_size);
 		}
 	}
-	ft_print_stack_stats(stack_a, stack_b);
-	ft_print_list_data(stack_a);
+	// ft_print_stack_stats(stack_a, stack_b);
+	// ft_print_list_data(stack_a);
 }

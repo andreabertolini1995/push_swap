@@ -98,30 +98,87 @@ static void	rotate_or_reverse_rotate(t_stack **stack_a, t_stack **stack_b, int n
 	g++;
 }
 
+// This function returns the minium number of operations for any given number to be potentially pushed to stack B
+static int	calc_min_num_operations(t_stack **stack_a, t_stack **stack_b, int number_to_push, int highest_lower)
+{
+	int	rotations_stack_a;
+	int	rev_rotations_stack_a;
+	int	rotations_stack_b;
+	int	rev_rotations_stack_b;
+
+	rotations_stack_a = calc_num_rotations_stack_a(stack_a, ft_stacksize(*stack_a), number_to_push);
+	rev_rotations_stack_a = calc_num_rev_rotations_stack_a(ft_stacksize(*stack_a), rotations_stack_a);
+	rotations_stack_b = calc_num_rotations_stack_b(number_to_push, highest_lower, stack_b);
+	rev_rotations_stack_b = calc_num_rev_rotations_stack_b(number_to_push, highest_lower, stack_b);
+	return (ft_min(ft_min(ft_min(ft_max(rotations_stack_a, rotations_stack_b), 
+			ft_max(rev_rotations_stack_a, rev_rotations_stack_b)), rotations_stack_b + rev_rotations_stack_a), 
+			rotations_stack_a + rev_rotations_stack_b));
+}
+
+// static void	push_chunks(t_stack **stack_a, t_stack **stack_b, int malloc_size, int chunk_threshold)
+// {
+// 	int	number_to_push;
+// 	int	highest_lower;
+// 	int	*arr;
+
+// 	arr = fill_index_array(*stack_a, chunk_threshold, malloc_size);
+// 	number_to_push = find_number_to_push(*stack_a, arr, malloc_size, ft_stacksize(*stack_a));
+// 	highest_lower = ft_highest_lower(number_to_push, *stack_b);
+// 	if (ft_stacksize(*stack_b) <= 1)
+// 	{
+// 		multiple_rotations(stack_a, arr, malloc_size, ft_stacksize(*stack_a));
+// 		push(stack_a, stack_b);
+// 		ft_printf("pb\n");
+// 		g++;
+// 		if (ft_stacksize(*stack_b) == 2 && highest_lower == 0)
+// 		{
+// 			swap(stack_b);
+// 			ft_printf("sb\n");
+// 			g++;
+// 		}
+// 	}
+// 	else
+// 		rotate_or_reverse_rotate(stack_a, stack_b, number_to_push, highest_lower);
+// }
+
 static void	push_chunks(t_stack **stack_a, t_stack **stack_b, int malloc_size, int chunk_threshold)
 {
 	int	number_to_push;
 	int	highest_lower;
 	int	*arr;
+	int	**ops;
+	int	i;
+	int min_num_operations;
+
 
 	arr = fill_index_array(*stack_a, chunk_threshold, malloc_size);
-	number_to_push = find_number_to_push(*stack_a, arr, malloc_size, ft_stacksize(*stack_a));
-	highest_lower = ft_highest_lower(number_to_push, *stack_b);
-	if (ft_stacksize(*stack_b) <= 1)
+	ops = (int **) malloc (sizeof(int *) * malloc_size);
+	i = 0;
+	while (i < malloc_size)
 	{
-		multiple_rotations(stack_a, arr, malloc_size, ft_stacksize(*stack_a));
-		push(stack_a, stack_b);
-		ft_printf("pb\n");
-		g++;
-		if (ft_stacksize(*stack_b) == 2 && highest_lower == 0)
+		number_to_push = arr[i];
+		highest_lower = ft_highest_lower(number_to_push, *stack_b);
+		min_num_operations = calc_min_num_operations(stack_a, stack_b, number_to_push, highest_lower);
+		// Don't remember how to malloc the 'rows' of the 2D array
+		ops[i][0] = number_to_push;
+		ops[i][1] = min_num_operations;
+		// I dont' remember what this conditions are for
+		if (ft_stacksize(*stack_b) <= 1)
 		{
-			swap(stack_b);
-			ft_printf("sb\n");
+			multiple_rotations(stack_a, arr, malloc_size, ft_stacksize(*stack_a));
+			push(stack_a, stack_b);
+			ft_printf("pb\n");
 			g++;
+			if (ft_stacksize(*stack_b) == 2 && highest_lower == 0)
+			{
+				swap(stack_b);
+				ft_printf("sb\n");
+				g++;
+			}
 		}
+			rotate_or_reverse_rotate(stack_a, stack_b, number_to_push, highest_lower);
+		i++;
 	}
-	else
-		rotate_or_reverse_rotate(stack_a, stack_b, number_to_push, highest_lower);
 }
 
 void	sort_stack(t_stack **stack_a, t_stack **stack_b, int initial_size, int chunk_size)

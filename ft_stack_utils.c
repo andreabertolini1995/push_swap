@@ -49,6 +49,7 @@ t_stack	*ft_stacknew(int data)
 		return (NULL);
 	tmp->data = data;
 	tmp->next = NULL;
+	tmp->changed = false;
 	return (tmp);
 }
 

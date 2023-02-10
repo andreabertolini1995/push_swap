@@ -39,10 +39,10 @@ void	ft_print_list_data(t_stack *stack)
 	{
 		while (stack->next != NULL)
 		{
-			printf("%d\n", stack->data);
+			ft_printf("Data: %d Changed: %d\n", stack->data, stack->changed);
 			stack = stack->next;
 		}
-		printf("%d\n", stack->data);
+		ft_printf("Data: %d Changed: %d\n", stack->data, stack->changed);
 	}
 }
 
@@ -53,7 +53,7 @@ void	ft_print_array(int *arr, int malloc_size)
 	i = 0;
 	while (i < malloc_size)
 	{
-		printf("Array element: %d\n", arr[i]);
+		ft_printf("Array element: %d\n", arr[i]);
 		i++;
 	}
 }

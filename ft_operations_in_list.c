@@ -46,18 +46,18 @@ int	ft_min_in_list(t_stack *stack)
 	return (min);
 }
 
-int	ft_tmp_min_in_list(t_stack *stack, int n, int i)
+int	ft_tmp_min_in_list(t_stack *stack, int n)
 {
 	t_stack	*ptr;
 	int		tmp_min;
 
 	ptr = stack;
-	while (ptr->data <= n)
+	while (ptr->data <= n || ptr->changed == true)
 		ptr = ptr->next;
 	tmp_min = ptr->data;
 	while (ptr != NULL)
 	{
-		if (ptr->data < tmp_min && ptr->data > n && (ptr->data < 1 || ptr->data > i-1))
+		if (ptr->data < tmp_min && ptr->data > n && ptr->changed == false)
 			tmp_min = ptr->data;
 		ptr = ptr->next;
 	}
@@ -139,13 +139,38 @@ int	find_position_in_list(t_stack *stack, int n)
 	return (pos);
 }
 
+int	find_position_in_changed_list(t_stack *stack, int n)
+{
+    t_stack	*ptr;
+    int	pos;
+
+	ptr = stack;
+	pos = 0;
+    while (ptr != NULL)
+    {
+        while (ptr->data != n)
+        {
+            pos++;
+            ptr = ptr->next;
+        }
+        if (ptr->changed == false)
+		{
+			return(pos);
+		}
+        else
+        {
+            pos++;
+            ptr = ptr->next;
+        }
+    }
+    return (pos);
+}
+
 void	replace_data_in_list(t_stack **stack, int pos, int n)
 {
 	t_stack	*ptr;
 	int		i;
 
-	ft_printf("Pos: %d\n", pos);
-	ft_printf("N: %d\n", n);
 	i = 0;
 	ptr = *stack;
 	while (i < pos)
@@ -154,6 +179,7 @@ void	replace_data_in_list(t_stack **stack, int pos, int n)
 		i++;
 	}
 	ptr->data = n;
+	ptr->changed = true;
 }
 
 void	put_higher_on_top(t_stack **stack_b)

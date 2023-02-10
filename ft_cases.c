@@ -59,7 +59,7 @@ void	only_reverse_rotations(t_stack **stack_a, t_stack **stack_b, int rev_rotati
 	{
 		reverse_rotate(stack_a);
 		reverse_rotate(stack_b);
-		ft_printf("rr\n");
+		ft_printf("rrr\n");
 		g++;
 		j++;
 	}

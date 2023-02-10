@@ -57,7 +57,7 @@ int		calc_num_rev_rotations_stack_b(int number_to_push, int highest_lower, t_sta
 // Operations in list
 int		ft_max_in_list(t_stack *stack);
 int		ft_min_in_list(t_stack *stack);
-int		ft_tmp_min_in_list(t_stack *stack, int n);
+int		ft_tmp_min_in_list(t_stack *stack, int n, int i);
 int		ft_in_range(int n, int min, int max);
 int		find_number_to_push(t_stack *stack_a, int *arr, int malloc_size, int size);
 int		ft_highest_lower(int n, t_stack *stack_b);

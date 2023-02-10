@@ -25,21 +25,21 @@ void	sort_three(t_stack **stack_a)
 		|| (pos_min == 0 && pos_max == 1))
 	{
 		swap(stack_a);
-		g++;
 		ft_printf("sa\n");
+		g++;
 		sort_three(stack_a);
 	}
 	else if (pos_min == 1 && pos_max == 0)
 	{
 		rotate(stack_a);
-		g++;
 		ft_printf("ra\n");
+		g++;
 	}
 	else if (pos_min == 2 && pos_max == 1)
 	{
 		reverse_rotate(stack_a);
-		g++;
 		ft_printf("rra\n");
+		g++;
 	}
 }
 
@@ -70,6 +70,7 @@ void find_min_and_push(t_stack **stack_a, t_stack **stack_b, int pos_min)
 	}
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
+	g++;
 }
 
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
@@ -82,8 +83,8 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	if ((*stack_b)->data < (*stack_b)->next->data)
 	{
 		swap(stack_b);
-		g++;
 		ft_printf("sb\n");
+		g++;
 	}
 	sort_three(stack_a);
 	push_everything_back(stack_a, stack_b);
@@ -94,7 +95,7 @@ void    sort_two(t_stack **stack_a)
     if ((*stack_a)->data > (*stack_a)->next->data)
 	{
 		swap(stack_a);
-		g++;
 		ft_printf("sa\n");
+		g++;
 	}
 }

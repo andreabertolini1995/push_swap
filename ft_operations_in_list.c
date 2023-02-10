@@ -46,7 +46,7 @@ int	ft_min_in_list(t_stack *stack)
 	return (min);
 }
 
-int	ft_tmp_min_in_list(t_stack *stack, int n)
+int	ft_tmp_min_in_list(t_stack *stack, int n, int i)
 {
 	t_stack	*ptr;
 	int		tmp_min;
@@ -57,7 +57,7 @@ int	ft_tmp_min_in_list(t_stack *stack, int n)
 	tmp_min = ptr->data;
 	while (ptr != NULL)
 	{
-		if (ptr->data < tmp_min && ptr->data > n)
+		if (ptr->data < tmp_min && ptr->data > n && (ptr->data < 1 || ptr->data > i-1))
 			tmp_min = ptr->data;
 		ptr = ptr->next;
 	}
@@ -144,6 +144,8 @@ void	replace_data_in_list(t_stack **stack, int pos, int n)
 	t_stack	*ptr;
 	int		i;
 
+	ft_printf("Pos: %d\n", pos);
+	ft_printf("N: %d\n", n);
 	i = 0;
 	ptr = *stack;
 	while (i < pos)

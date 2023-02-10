@@ -64,27 +64,11 @@ int	ft_tmp_min_in_list(t_stack *stack, int n)
 	return (tmp_min);
 }
 
-int	ft_in_range(int n, int min, int max)
-{
-	int	i;
-
-	i = min;
-	while (i <= max)
-	{
-		if (n == i)
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 int	find_number_to_push(t_stack *stack_a, int *arr, int malloc_size, int size)
 {
-	t_stack	*ptr;
 	int		i;
 	int		index;
 
-	ptr = stack_a;
 	if (arr[0] <= (size - arr[malloc_size - 1]))
 	{
 		index = arr[0];
@@ -92,7 +76,7 @@ int	find_number_to_push(t_stack *stack_a, int *arr, int malloc_size, int size)
 		while (i < index)
 		{
 			i++;
-			ptr = ptr->next;
+			stack_a = stack_a->next;
 		}
 	}
 	else
@@ -102,10 +86,10 @@ int	find_number_to_push(t_stack *stack_a, int *arr, int malloc_size, int size)
 		while (i < size - index)
 		{
 			i++;
-			ptr = ptr->next;
+			stack_a = stack_a->next;
 		}
 	}
-	return (ptr->data);
+	return (stack_a->data);
 }
 
 int	ft_highest_lower(int n, t_stack *stack_b)
@@ -122,125 +106,4 @@ int	ft_highest_lower(int n, t_stack *stack_b)
 		ptr = ptr->next;
 	}
 	return (highest_lower);
-}
-
-int	find_position_in_list(t_stack *stack, int n)
-{
-	t_stack	*ptr;
-	int		pos;
-
-	pos = 0;
-	ptr = stack;
-	while (ptr->data != n)
-	{
-		pos++;
-		ptr = ptr->next;
-	}
-	return (pos);
-}
-
-int	find_position_in_changed_list(t_stack *stack, int n)
-{
-    t_stack	*ptr;
-    int	pos;
-
-	ptr = stack;
-	pos = 0;
-    while (ptr != NULL)
-    {
-        while (ptr->data != n)
-        {
-            pos++;
-            ptr = ptr->next;
-        }
-        if (ptr->changed == false)
-		{
-			return(pos);
-		}
-        else
-        {
-            pos++;
-            ptr = ptr->next;
-        }
-    }
-    return (pos);
-}
-
-void	replace_data_in_list(t_stack **stack, int pos, int n)
-{
-	t_stack	*ptr;
-	int		i;
-
-	i = 0;
-	ptr = *stack;
-	while (i < pos)
-	{
-		ptr = ptr->next;
-		i++;
-	}
-	ptr->data = n;
-	ptr->changed = true;
-}
-
-void	put_higher_on_top(t_stack **stack_b)
-{
-	int	rotations_stack_b;
-	int	rev_rotations_stack_b;
-	int	j;
-
-	rotations_stack_b = find_position_in_list(*stack_b, ft_max_in_list(*stack_b));
-	rev_rotations_stack_b = ft_stacksize(*stack_b) - find_position_in_list(*stack_b, ft_max_in_list(*stack_b));
-	j = 0;
-	if (rotations_stack_b <= rev_rotations_stack_b)
-	{
-		while (j < rotations_stack_b)
-		{
-			rotate(stack_b);
-			ft_printf("rb\n");
-			g++;
-			j++;
-		}
-	}
-	else
-	{
-		while (j < rev_rotations_stack_b)
-		{
-			reverse_rotate(stack_b);
-			ft_printf("rrb\n");
-			g++;
-			j++;
-		}
-	}
-}
-
-void	push_everything_back(t_stack **stack_a, t_stack **stack_b)
-{
-	int	j;
-	int	size_b;
-
-	size_b = ft_stacksize(*stack_b);
-	j = 0;
-	while (j < size_b)
-	{
-		push(stack_b, stack_a);
-		ft_printf("pa\n");
-		g++;
-		j++;
-	}
-}
-
-int	ft_max(int a, int b)
-{
-	if (a >= b)
-		return (a);
-	else
-		return (b);
-}
-
-int	ft_min(int a, int b)
-{
-	if (a <= b)
-		return (a);
-	else
-		return (b);
 }

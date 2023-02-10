@@ -1,42 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abertoli <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 14:42:12 by abertoli          #+#    #+#             */
-/*   Updated: 2022/10/20 14:42:16 by abertoli         ###   ########.fr       */
+/*   Created: 2022/10/19 17:18:22 by abertoli          #+#    #+#             */
+/*   Updated: 2022/10/19 17:18:23 by abertoli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+extern int	g;
+
+void	loop_and_rotate(t_stack **stack, int lim, char *str)
 {
-	int	sign;
-	int	final_number;
 	int	i;
 
-	sign = 1;
-	final_number = 0;
 	i = 0;
-	while (str[i] != '\0')
+	while (i < lim)
 	{
-		while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
-			i++;
-		if (str[i] == '-' || str[i] == '+')
-		{
-			if (str[i] == '-')
-				sign = -1;
-			i++;
-		}
-		while ((str[i] >= '0') && (str[i] <= '9'))
-		{
-			final_number = final_number * 10 + (str[i] - 48);
-			i++;
-		}
-		return (final_number * sign);
+		rotate(stack);
+		if (!strcmp(str, "stack_a"))
+			ft_printf("ra\n");
+		else
+			ft_printf("rb\n");
+		g++;
+		i++;
 	}
-	return (final_number * sign);
+}
+
+void	loop_and_reverse_rotate(t_stack **stack, int lim, char *str)
+{
+	int	i;
+
+	i = 0;
+	while (i < lim)
+	{
+		reverse_rotate(stack);
+		if (!strcmp(str, "stack_a"))
+			ft_printf("rra\n");
+		else
+			ft_printf("rrb\n");
+		g++;
+		i++;
+	}
 }

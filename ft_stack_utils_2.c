@@ -10,32 +10,43 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "push_swap.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <limits.h>
+int	ft_stacksize(t_stack *lst)
+{
+	int	count;
 
-int		ft_printf(const char *str, ...);
+	count = 0;
+	while (lst != NULL)
+	{
+		count++;
+		lst = lst->next;
+	}
+	return (count);
+}
 
-int		ft_putstr_count(char *s);
-int		ft_putchar_count(char c);
-int		ft_putnbr_count(int n);
-int		ft_putunbr_count(unsigned int n);
-int		ft_putaddr_count(void *n);
+void	ft_stackadd_back(t_stack **lst, t_stack *new)
+{
+	t_stack	*last_node;
 
-int		ft_puthex_count_int(int n, char *letter_size, int binary_size);
-int		ft_puthex_count_ulong(unsigned long n,
-			char *letter_size, int binary_size);
+	if ((*lst) == NULL)
+	{
+		new->next = NULL;
+		*lst = new;
+	}
+	else
+	{
+		last_node = ft_stacklast(*lst);
+		last_node->next = new;
+	}
+}
 
-size_t	ft_strlen(const char *str);
-int		ft_strncmp(const char *s1, const char *s2, size_t n);
-
-int		*ft_dec_to_binary(int n, int binary_size);
-void	ft_invert_binary(int *binary, int binary_size);
-int		*ft_add_one_binary(int *binary, int binary_size);
-int		ft_iterative_power(int nb, int power);
-
-#endif
+void	ft_stackadd_front(t_stack **lst, t_stack *new)
+{
+	if (lst != NULL)
+	{
+		if (*lst != NULL)
+			new->next = *lst;
+		*lst = new;
+	}
+}

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int g = 0;
+int	g = 0;
 
 static void	fill_stack_a(t_stack *stack_a, int argc, char **argv)
 {
@@ -40,7 +40,8 @@ static void	transform_stack(t_stack **stack_a)
 	{
 		new_min = ft_tmp_min_in_list(*stack_a, tmp_min);
 		tmp_min = new_min;
-		replace_data_in_list(stack_a, find_position_in_changed_list(*stack_a, tmp_min), i);
+		replace_data_in_list(stack_a,
+			find_position_in_changed_list(*stack_a, tmp_min), i);
 		i++;
 	}
 }
@@ -51,7 +52,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 	int		chunk_size;
 
-	chunk_size = 20;
+	chunk_size = 1;
 	if (argc == 1 || argc == 2)
 		exit(0);
 	else
@@ -68,6 +69,10 @@ int	main(int argc, char **argv)
 		else
 		{
 			transform_stack(&stack_a);
+			if (argc == 101)
+				chunk_size = 20;
+			else if (argc == 501)
+				chunk_size = 50;
 			sort_stack(&stack_a, &stack_b, ft_stacksize(stack_a), chunk_size);
 		}
 	}

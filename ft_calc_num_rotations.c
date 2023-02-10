@@ -34,24 +34,32 @@ int	calc_num_rev_rotations_stack_a(int size, int rotations)
 	return (rev_rotations);
 }
 
-int	calc_num_rotations_stack_b(int number_to_push, int highest_lower, t_stack **stack_b)
+int	calc_num_rotations_stack_b(int number_to_push,
+				int highest_lower, t_stack **stack_b)
 {
 	int	rotations;
 
-	if (number_to_push < ft_min_in_list(*stack_b) || number_to_push > ft_max_in_list(*stack_b))
-		rotations = find_position_in_list(*stack_b, ft_max_in_list(*stack_b));
+	if (number_to_push < ft_min_in_list(*stack_b)
+		|| number_to_push > ft_max_in_list(*stack_b))
+		rotations = find_position_in_list(*stack_b,
+				ft_max_in_list(*stack_b));
 	else
-		rotations = find_position_in_list(*stack_b, highest_lower);
+		rotations = find_position_in_list(*stack_b,
+				highest_lower);
 	return (rotations);
 }
 
-int	calc_num_rev_rotations_stack_b(int number_to_push, int highest_lower, t_stack **stack_b)
+int	calc_num_rev_rotations_stack_b(int number_to_push,
+				int highest_lower, t_stack **stack_b)
 {
 	int	rev_rotations;
 
-	if (number_to_push < ft_min_in_list(*stack_b) || number_to_push > ft_max_in_list(*stack_b))
-		rev_rotations = ft_stacksize(*stack_b) - find_position_in_list(*stack_b, ft_max_in_list(*stack_b));
+	if (number_to_push < ft_min_in_list(*stack_b)
+		|| number_to_push > ft_max_in_list(*stack_b))
+		rev_rotations = ft_stacksize(*stack_b)
+			- find_position_in_list(*stack_b, ft_max_in_list(*stack_b));
 	else
-		rev_rotations = ft_stacksize(*stack_b) - find_position_in_list(*stack_b, highest_lower);
+		rev_rotations = ft_stacksize(*stack_b)
+			- find_position_in_list(*stack_b, highest_lower);
 	return (rev_rotations);
 }

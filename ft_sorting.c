@@ -14,35 +14,17 @@
 
 extern int	g;
 
-static void	multiple_rotations(t_stack **stack_a, int *arr, int malloc_size, int size)
+static void	multiple_rotations(t_stack **stack_a, int *arr,
+								int malloc_size, int size)
 {
-	int	i;
-
 	if (arr[0] <= (size - arr[malloc_size - 1]))
-	{
-		i = 0;
-		while (i < arr[0])
-		{
-			rotate(stack_a);
-			ft_printf("ra\n");
-			g++;
-			i++;
-		}
-	}
+		loop_and_rotate(stack_a, arr[0], "stack_a");
 	else
-	{
-		i = 0;
-		while (i < (size - arr[malloc_size - 1]))
-		{
-			reverse_rotate(stack_a);
-			ft_printf("rra\n");
-			g++;
-			i++;
-		}
-	}
+		loop_and_reverse_rotate(stack_a, size - arr[malloc_size - 1], "stack_a");
 }
 
-static int	*fill_index_array(t_stack *stack_a, int chunk_threshold, int malloc_size)
+static int	*fill_index_array(t_stack *stack_a, int chunk_threshold,
+								int malloc_size)
 {
 	t_stack	*ptr;
 	int		i;
@@ -68,31 +50,48 @@ static int	*fill_index_array(t_stack *stack_a, int chunk_threshold, int malloc_s
 	return (arr);
 }
 
-static void	rotate_or_reverse_rotate(t_stack **stack_a, t_stack **stack_b, int number_to_push, int highest_lower)
+static void	rotate_or_reverse_rotate(t_stack **stack_a, t_stack **stack_b,
+										int number_to_push, int highest_lower)
 {
 	int	rotations_stack_a;
 	int	rev_rotations_stack_a;
 	int	rotations_stack_b;
 	int	rev_rotations_stack_b;
 
-	rotations_stack_a = calc_num_rotations_stack_a(stack_a, ft_stacksize(*stack_a), number_to_push);
-	rev_rotations_stack_a = calc_num_rev_rotations_stack_a(ft_stacksize(*stack_a), rotations_stack_a);
-	rotations_stack_b = calc_num_rotations_stack_b(number_to_push, highest_lower, stack_b);
-	rev_rotations_stack_b = calc_num_rev_rotations_stack_b(number_to_push, highest_lower, stack_b);
-	if (ft_max(rotations_stack_a, rotations_stack_b) <= ft_max(rev_rotations_stack_a, rev_rotations_stack_b)
-		&& ft_max(rotations_stack_a, rotations_stack_b) <= rotations_stack_b + rev_rotations_stack_a
-		&& ft_max(rotations_stack_a, rotations_stack_b) <= rotations_stack_a + rev_rotations_stack_b)
+	rotations_stack_a = calc_num_rotations_stack_a(stack_a,
+			ft_stacksize(*stack_a), number_to_push);
+	rev_rotations_stack_a = calc_num_rev_rotations_stack_a(
+			ft_stacksize(*stack_a), rotations_stack_a);
+	rotations_stack_b = calc_num_rotations_stack_b(number_to_push,
+			highest_lower, stack_b);
+	rev_rotations_stack_b = calc_num_rev_rotations_stack_b(
+			number_to_push, highest_lower, stack_b);
+	if (ft_max(rotations_stack_a, rotations_stack_b)
+		<= ft_max(rev_rotations_stack_a, rev_rotations_stack_b)
+		&& ft_max(rotations_stack_a, rotations_stack_b)
+		<= rotations_stack_b + rev_rotations_stack_a
+		&& ft_max(rotations_stack_a, rotations_stack_b)
+		<= rotations_stack_a + rev_rotations_stack_b)
 		only_rotations(stack_a, stack_b, rotations_stack_a, rotations_stack_b);
-	else if (ft_max(rev_rotations_stack_a, rev_rotations_stack_b) <= ft_max(rotations_stack_a, rotations_stack_b)
-		&& ft_max(rev_rotations_stack_a, rev_rotations_stack_b) <= rotations_stack_b + rev_rotations_stack_a
-		&& ft_max(rev_rotations_stack_a, rev_rotations_stack_b) <= rotations_stack_a + rev_rotations_stack_b)
-		only_reverse_rotations(stack_a, stack_b, rev_rotations_stack_a, rev_rotations_stack_b);
-	else if (rotations_stack_a + rev_rotations_stack_b <= ft_max(rotations_stack_a, rotations_stack_b)
-		&& rotations_stack_a + rev_rotations_stack_b <= ft_max(rev_rotations_stack_a, rev_rotations_stack_b)
-		&& rotations_stack_a + rev_rotations_stack_b <= (rotations_stack_b + rev_rotations_stack_a))
-		rotations_a_rev_rotations_b(stack_a, stack_b, rotations_stack_a, rev_rotations_stack_b);
+	else if (ft_max(rev_rotations_stack_a, rev_rotations_stack_b)
+		<= ft_max(rotations_stack_a, rotations_stack_b)
+		&& ft_max(rev_rotations_stack_a, rev_rotations_stack_b)
+		<= rotations_stack_b + rev_rotations_stack_a
+		&& ft_max(rev_rotations_stack_a, rev_rotations_stack_b)
+		<= rotations_stack_a + rev_rotations_stack_b)
+		only_reverse_rotations(stack_a, stack_b,
+			rev_rotations_stack_a, rev_rotations_stack_b);
+	else if (rotations_stack_a + rev_rotations_stack_b
+		<= ft_max(rotations_stack_a, rotations_stack_b)
+		&& rotations_stack_a + rev_rotations_stack_b
+		<= ft_max(rev_rotations_stack_a, rev_rotations_stack_b)
+		&& rotations_stack_a + rev_rotations_stack_b
+		<= (rotations_stack_b + rev_rotations_stack_a))
+		rotations_a_rev_rotations_b(stack_a, stack_b,
+			rotations_stack_a, rev_rotations_stack_b);
 	else
-		rotations_b_rev_rotations_a(stack_a, stack_b, rev_rotations_stack_a, rotations_stack_b);
+		rotations_b_rev_rotations_a(stack_a, stack_b,
+			rev_rotations_stack_a, rotations_stack_b);
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
 	g++;
@@ -115,14 +114,16 @@ static void	rotate_or_reverse_rotate(t_stack **stack_a, t_stack **stack_b, int n
 // 			rotations_stack_a + rev_rotations_stack_b));
 // }
 
-static void	push_chunks(t_stack **stack_a, t_stack **stack_b, int malloc_size, int chunk_threshold)
+static void	push_chunks(t_stack **stack_a, t_stack **stack_b,
+							int malloc_size, int chunk_threshold)
 {
 	int	number_to_push;
 	int	highest_lower;
 	int	*arr;
 
 	arr = fill_index_array(*stack_a, chunk_threshold, malloc_size);
-	number_to_push = find_number_to_push(*stack_a, arr, malloc_size, ft_stacksize(*stack_a));
+	number_to_push = find_number_to_push(*stack_a, arr, 
+		malloc_size, ft_stacksize(*stack_a));
 	highest_lower = ft_highest_lower(number_to_push, *stack_b);
 	if (ft_stacksize(*stack_b) <= 1)
 	{
@@ -207,7 +208,5 @@ void	sort_stack(t_stack **stack_a, t_stack **stack_b, int initial_size, int chun
 /*
 Next steps:
 - try to come up with a formula (?) to understand the best number of chunks (this part can be hardcoded) (it should be a curve - maybe use Chat GPT)
-- use the checker
 - use the visualizer
-- write the function to handle 1, 3, 5 numbers stacks
 */

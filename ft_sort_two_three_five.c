@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-extern int g;
+extern int	g;
 
 void	sort_three(t_stack **stack_a)
 {
@@ -43,31 +43,15 @@ void	sort_three(t_stack **stack_a)
 	}
 }
 
-void find_min_and_push(t_stack **stack_a, t_stack **stack_b, int pos_min)
+void	find_min_and_push(t_stack **stack_a, t_stack **stack_b, int pos_min)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (pos_min > 0 && pos_min < 3)
-	{
-		while (i < pos_min)
-		{
-			rotate(stack_a);
-			ft_printf("ra\n");
-			g++;
-			i++;
-		}
-	}
+		loop_and_rotate(stack_a, pos_min, "stack_a");
 	else if (pos_min >= 3)
-	{
-		while (i < pos_min)
-		{
-			reverse_rotate(stack_a);
-			ft_printf("rra\n");
-			g++;
-			i++;
-		}
-	}
+		loop_and_reverse_rotate(stack_a, pos_min, "stack_a");
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
 	g++;
@@ -78,8 +62,10 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	int	i;
 
 	i = 0;
-	find_min_and_push(stack_a, stack_b, find_position_in_list(*stack_a, ft_min_in_list(*stack_a)));
-	find_min_and_push(stack_a, stack_b, find_position_in_list(*stack_a, ft_min_in_list(*stack_a)));
+	find_min_and_push(stack_a, stack_b,
+		find_position_in_list(*stack_a, ft_min_in_list(*stack_a)));
+	find_min_and_push(stack_a, stack_b,
+		find_position_in_list(*stack_a, ft_min_in_list(*stack_a)));
 	if ((*stack_b)->data < (*stack_b)->next->data)
 	{
 		swap(stack_b);
@@ -90,9 +76,9 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	push_everything_back(stack_a, stack_b);
 }
 
-void    sort_two(t_stack **stack_a)
+void	sort_two(t_stack **stack_a)
 {
-    if ((*stack_a)->data > (*stack_a)->next->data)
+	if ((*stack_a)->data > (*stack_a)->next->data)
 	{
 		swap(stack_a);
 		ft_printf("sa\n");

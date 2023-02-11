@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-int	g = 0;
-
 static void	fill_stack_a(t_stack *stack_a, int argc, char **argv)
 {
 	int	i;
@@ -46,34 +44,42 @@ static void	transform_stack(t_stack **stack_a)
 	}
 }
 
+static int	calc_num_chunks(int input_numbers)
+{
+	int	num_chunks;
+
+	if (input_numbers % 5 == 0)
+		num_chunks = 5;
+	else if (input_numbers % 2 == 0)
+		num_chunks = 2;
+	else
+		num_chunks = 1;
+	return (num_chunks);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		chunk_size;
+	int		num_chunks;
+	int		input_numbers;
 
-	chunk_size = 1;
-	if (argc == 1 || argc == 2)
+	input_numbers = argc - 1;
+	if (input_numbers == 0 || input_numbers == 1)
 		exit(0);
 	else
 	{
 		stack_a = ft_stacknew(ft_atoi(argv[1]));
 		stack_b = NULL;
 		fill_stack_a(stack_a, argc, argv);
-		if (argc == 3)
-			sort_two(&stack_a);
-		else if (argc == 4)
-			sort_three(&stack_a);
-		else if (argc == 6)
-			sort_five(&stack_a, &stack_b);
+		if (input_numbers == 2 || input_numbers == 3 || input_numbers == 5)
+			sort_two_three_five(stack_a, stack_b, input_numbers);
 		else
 		{
 			transform_stack(&stack_a);
-			if (argc == 101)
-				chunk_size = 20;
-			else if (argc == 501)
-				chunk_size = 50;
-			sort_stack(&stack_a, &stack_b, ft_stacksize(stack_a), chunk_size);
+			num_chunks = calc_num_chunks(input_numbers);
+			sort_stack(&stack_a, &stack_b, ft_stacksize(stack_a), num_chunks);
 		}
 	}
+	free_stack(stack_a);
 }

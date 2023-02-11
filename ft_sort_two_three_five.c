@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-extern int	g;
-
 void	sort_three(t_stack **stack_a)
 {
 	int	pos_min;
@@ -26,20 +24,17 @@ void	sort_three(t_stack **stack_a)
 	{
 		swap(stack_a);
 		ft_printf("sa\n");
-		g++;
 		sort_three(stack_a);
 	}
 	else if (pos_min == 1 && pos_max == 0)
 	{
 		rotate(stack_a);
 		ft_printf("ra\n");
-		g++;
 	}
 	else if (pos_min == 2 && pos_max == 1)
 	{
 		reverse_rotate(stack_a);
 		ft_printf("rra\n");
-		g++;
 	}
 }
 
@@ -54,7 +49,6 @@ void	find_min_and_push(t_stack **stack_a, t_stack **stack_b, int pos_min)
 		loop_and_reverse_rotate(stack_a, pos_min, "stack_a");
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
-	g++;
 }
 
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
@@ -70,7 +64,6 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 	{
 		swap(stack_b);
 		ft_printf("sb\n");
-		g++;
 	}
 	sort_three(stack_a);
 	push_everything_back(stack_a, stack_b);
@@ -82,6 +75,16 @@ void	sort_two(t_stack **stack_a)
 	{
 		swap(stack_a);
 		ft_printf("sa\n");
-		g++;
 	}
+}
+
+void	sort_two_three_five(t_stack *stack_a,
+			t_stack *stack_b, int input_numbers)
+{
+	if (input_numbers == 2)
+		sort_two(&stack_a);
+	else if (input_numbers == 3)
+		sort_three(&stack_a);
+	else if (input_numbers == 5)
+		sort_five(&stack_a, &stack_b);
 }

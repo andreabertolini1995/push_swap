@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-extern int	g;
-
 int	ft_max_in_list(t_stack *stack)
 {
 	t_stack	*ptr;
@@ -64,30 +62,15 @@ int	ft_tmp_min_in_list(t_stack *stack, int n)
 	return (tmp_min);
 }
 
-int	find_number_to_push(t_stack *stack_a, int *arr, int malloc_size, int size)
+int	find_number_at_index(t_stack *stack_a, int index)
 {
 	int		i;
-	int		index;
 
-	if (arr[0] <= (size - arr[malloc_size - 1]))
+	i = 0;
+	while (i < index)
 	{
-		index = arr[0];
-		i = 0;
-		while (i < index)
-		{
-			i++;
-			stack_a = stack_a->next;
-		}
-	}
-	else
-	{
-		index = size - arr[malloc_size - 1];
-		i = 0;
-		while (i < size - index)
-		{
-			i++;
-			stack_a = stack_a->next;
-		}
+		i++;
+		stack_a = stack_a->next;
 	}
 	return (stack_a->data);
 }

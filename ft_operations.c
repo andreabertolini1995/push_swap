@@ -22,15 +22,6 @@ void	swap(t_stack **stack)
 	*stack = tmp;
 }
 
-void	remove_first_node(t_stack **stack)
-{
-	t_stack	*first_node;
-
-	first_node = *stack;
-	*stack = (*stack)->next;
-	free(first_node);
-}
-
 void	push(t_stack **src, t_stack **dest)
 {
 	int	size;

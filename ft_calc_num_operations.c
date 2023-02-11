@@ -63,3 +63,33 @@ int	calc_num_rev_rotations_stack_b(int number_to_push,
 			- find_position_in_list(*stack_b, highest_lower);
 	return (rev_rotations);
 }
+
+int	calc_min_num_operations(t_stack **stack_a, t_stack **stack_b,
+				int number_to_push, int highest_lower)
+{
+	int	rotations_stack_a;
+	int	rev_rotations_stack_a;
+	int	rotations_stack_b;
+	int	rev_rotations_stack_b;
+
+	rotations_stack_a = calc_num_rotations_stack_a(stack_a,
+			ft_stacksize(*stack_a), number_to_push);
+	rev_rotations_stack_a = calc_num_rev_rotations_stack_a(
+			ft_stacksize(*stack_a), rotations_stack_a);
+	if (ft_stacksize(*stack_b) <= 1)
+	{
+		rotations_stack_b = 0;
+		rev_rotations_stack_b = 0;
+	}
+	else
+	{
+		rotations_stack_b = calc_num_rotations_stack_b(number_to_push,
+				highest_lower, stack_b);
+		rev_rotations_stack_b = calc_num_rev_rotations_stack_b(number_to_push,
+				highest_lower, stack_b);
+	}
+	return (ft_min(ft_min(ft_min(ft_max(rotations_stack_a, rotations_stack_b),
+					ft_max(rev_rotations_stack_a, rev_rotations_stack_b)),
+				rotations_stack_b + rev_rotations_stack_a),
+			rotations_stack_a + rev_rotations_stack_b));
+}

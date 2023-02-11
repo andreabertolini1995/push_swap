@@ -39,3 +39,19 @@ int	ft_in_range(int n, int min, int max)
 	}
 	return (0);
 }
+
+int	ft_min_in_array(int **ops, int malloc_size)
+{
+	int	min;
+	int	i;
+
+	min = ops[0][1];
+	i = 1;
+	while (i < malloc_size)
+	{
+		if (ops[i][1] < min)
+			min = ops[i][1];
+		i++;
+	}
+	return (min);
+}

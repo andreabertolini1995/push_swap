@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-extern int	g;
-
 void	ft_print_stack_stats(t_stack *stack_a, t_stack *stack_b)
 {
 	ft_printf("--------------------------------\n");
@@ -30,7 +28,6 @@ void	ft_print_stack_stats(t_stack *stack_a, t_stack *stack_b)
 		ft_printf("Last element of stack b: %d\n", ft_stacklast(stack_b)->data);
 	}
 	ft_printf("--------------------------------\n");
-	ft_printf("Total number of operations: %d\n", g);
 }
 
 void	ft_print_list_data(t_stack *stack)
@@ -39,10 +36,10 @@ void	ft_print_list_data(t_stack *stack)
 	{
 		while (stack->next != NULL)
 		{
-			ft_printf("Data: %d Changed: %d\n", stack->data, stack->changed);
+			ft_printf("Data: %d\n", stack->data);
 			stack = stack->next;
 		}
-		ft_printf("Data: %d Changed: %d\n", stack->data, stack->changed);
+		ft_printf("Data: %d\n", stack->data);
 	}
 }
 
@@ -58,7 +55,8 @@ void	ft_print_array(int *arr, int malloc_size)
 	}
 }
 
-void	ft_print_rotations(int rotations_stack_a, int rev_rotations_stack_a, int rotations_stack_b, int rev_rotations_stack_b)
+void	ft_print_rotations(int rotations_stack_a, int rev_rotations_stack_a,
+		int rotations_stack_b, int rev_rotations_stack_b)
 {
 	ft_printf("-----------------------------\n");
 	ft_printf("Rotations stack_a: %d\n", rotations_stack_a);

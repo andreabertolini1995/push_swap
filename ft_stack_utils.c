@@ -52,3 +52,26 @@ t_stack	*ft_stacknew(int data)
 	tmp->changed = false;
 	return (tmp);
 }
+
+void	remove_first_node(t_stack **stack)
+{
+	t_stack	*first_node;
+
+	first_node = *stack;
+	*stack = (*stack)->next;
+	free(first_node);
+}
+
+void	free_stack(t_stack *stack)
+{
+	t_stack	*tmp;
+
+	tmp = stack;
+	while (stack != NULL)
+	{
+		tmp = stack->next;
+		free(stack);
+		stack = tmp;
+	}
+	stack = NULL;
+}

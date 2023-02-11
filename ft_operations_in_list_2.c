@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-extern int	g;
-
 int	find_position_in_list(t_stack *stack, int n)
 {
 	t_stack	*ptr;
@@ -98,7 +96,6 @@ void	push_everything_back(t_stack **stack_a, t_stack **stack_b)
 	{
 		push(stack_b, stack_a);
 		ft_printf("pa\n");
-		g++;
 		j++;
 	}
 }

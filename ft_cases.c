@@ -12,9 +12,7 @@
 
 #include "push_swap.h"
 
-extern int	g;
-
-void	only_rotations(t_stack **stack_a, t_stack **stack_b,
+void	only_rot(t_stack **stack_a, t_stack **stack_b,
 			int rotations_stack_a, int rotations_stack_b)
 {
 	int	j;
@@ -25,7 +23,6 @@ void	only_rotations(t_stack **stack_a, t_stack **stack_b,
 		rotate(stack_a);
 		rotate(stack_b);
 		ft_printf("rr\n");
-		g++;
 		j++;
 	}
 	j = 0;
@@ -37,7 +34,7 @@ void	only_rotations(t_stack **stack_a, t_stack **stack_b,
 			- rotations_stack_a, "stack_b");
 }
 
-void	only_reverse_rotations(t_stack **stack_a, t_stack **stack_b,
+void	only_reverse_rot(t_stack **stack_a, t_stack **stack_b,
 			int rev_rotations_stack_a, int rev_rotations_stack_b)
 {
 	int	j;
@@ -48,7 +45,6 @@ void	only_reverse_rotations(t_stack **stack_a, t_stack **stack_b,
 		reverse_rotate(stack_a);
 		reverse_rotate(stack_b);
 		ft_printf("rrr\n");
-		g++;
 		j++;
 	}
 	j = 0;
@@ -60,14 +56,14 @@ void	only_reverse_rotations(t_stack **stack_a, t_stack **stack_b,
 			- rev_rotations_stack_a, "stack_b");
 }
 
-void	rotations_a_rev_rotations_b(t_stack **stack_a, t_stack **stack_b,
+void	rot_a_rev_rot_b(t_stack **stack_a, t_stack **stack_b,
 			int rotations_stack_a, int rev_rotations_stack_b)
 {
 	loop_and_rotate(stack_a, rotations_stack_a, "stack_a");
 	loop_and_reverse_rotate(stack_b, rev_rotations_stack_b, "stack_b");
 }
 
-void	rotations_b_rev_rotations_a(t_stack **stack_a, t_stack **stack_b,
+void	rot_b_rev_rot_a(t_stack **stack_a, t_stack **stack_b,
 			int rev_rotations_stack_a, int rotations_stack_b)
 {
 	loop_and_reverse_rotate(stack_a, rev_rotations_stack_a, "stack_a");

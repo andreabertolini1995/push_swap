@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-extern int	g;
-
 void	loop_and_rotate(t_stack **stack, int lim, char *str)
 {
 	int	i;
@@ -26,7 +24,6 @@ void	loop_and_rotate(t_stack **stack, int lim, char *str)
 			ft_printf("ra\n");
 		else
 			ft_printf("rb\n");
-		g++;
 		i++;
 	}
 }
@@ -43,7 +40,16 @@ void	loop_and_reverse_rotate(t_stack **stack, int lim, char *str)
 			ft_printf("rra\n");
 		else
 			ft_printf("rrb\n");
-		g++;
 		i++;
 	}
+}
+
+void	multiple_rotations(t_stack **stack_a, int *arr,
+								int malloc_size, int size)
+{
+	if (arr[0] <= (size - arr[malloc_size - 1]))
+		loop_and_rotate(stack_a, arr[0], "stack_a");
+	else
+		loop_and_reverse_rotate(stack_a,
+			size - arr[malloc_size - 1], "stack_a");
 }

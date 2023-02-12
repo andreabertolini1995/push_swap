@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
 		stack_b = NULL;
 		fill_stack_a(stack_a, argc, argv);
 		if (input_numbers == 2 || input_numbers == 3 || input_numbers == 5)
-			sort_two_three_five(stack_a, stack_b, input_numbers);
+			sort_two_three_five(&stack_a, &stack_b, input_numbers);
 		else
 		{
 			transform_stack(&stack_a);

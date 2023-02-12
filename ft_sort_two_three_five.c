@@ -46,7 +46,8 @@ void	find_min_and_push(t_stack **stack_a, t_stack **stack_b, int pos_min)
 	if (pos_min > 0 && pos_min < 3)
 		loop_and_rotate(stack_a, pos_min, "stack_a");
 	else if (pos_min >= 3)
-		loop_and_reverse_rotate(stack_a, ft_stacksize(*stack_a) - pos_min, "stack_a");
+		loop_and_reverse_rotate(stack_a,
+			ft_stacksize(*stack_a) - pos_min, "stack_a");
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
 }
@@ -78,13 +79,13 @@ void	sort_two(t_stack **stack_a)
 	}
 }
 
-void	sort_two_three_five(t_stack *stack_a,
-			t_stack *stack_b, int input_numbers)
+void	sort_two_three_five(t_stack **stack_a,
+			t_stack **stack_b, int input_numbers)
 {
 	if (input_numbers == 2)
-		sort_two(&stack_a);
+		sort_two(stack_a);
 	else if (input_numbers == 3)
-		sort_three(&stack_a);
+		sort_three(stack_a);
 	else if (input_numbers == 5)
-		sort_five(&stack_a, &stack_b);
+		sort_five(stack_a, stack_b);
 }

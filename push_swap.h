@@ -96,8 +96,8 @@ void	sort_three(t_stack **stack_a);
 void	find_min_and_push(t_stack **stack_a, t_stack **stack_b, int pos_min);
 void	sort_five(t_stack **stack_a, t_stack **stack_b);
 void	sort_two(t_stack **stack_a);
-void	sort_two_three_five(t_stack *stack_a,
-			t_stack *stack_b, int input_numbers);
+void	sort_two_three_five(t_stack **stack_a,
+			t_stack **stack_b, int input_numbers);
 
 // Fill arrays
 int		*fill_index_array(t_stack *stack_a, int chunk_threshold,

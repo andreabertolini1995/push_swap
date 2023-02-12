@@ -81,5 +81,5 @@ int	main(int argc, char **argv)
 			sort_stack(&stack_a, &stack_b, ft_stacksize(stack_a), num_chunks);
 		}
 	}
-	free_stack(stack_a);
+	free_stack(&stack_a);
 }

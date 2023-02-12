@@ -36,10 +36,10 @@ void	ft_print_list_data(t_stack *stack)
 	{
 		while (stack->next != NULL)
 		{
-			ft_printf("Data: %d\n", stack->data);
+			ft_printf("%d\n", stack->data);
 			stack = stack->next;
 		}
-		ft_printf("Data: %d\n", stack->data);
+		ft_printf("%d\n", stack->data);
 	}
 }
 

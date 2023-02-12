@@ -36,7 +36,7 @@ t_stack	*ft_stacksecondbutlast(t_stack *lst);
 t_stack	*ft_stacknew(int data);
 int		ft_stacksize(t_stack *lst);
 void	remove_first_node(t_stack **stack);
-void	free_stack(t_stack *stack);
+void	free_stack(t_stack **stack);
 
 // Operations allowed
 void	swap(t_stack **stack);

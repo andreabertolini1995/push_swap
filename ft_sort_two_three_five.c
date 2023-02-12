@@ -46,7 +46,7 @@ void	find_min_and_push(t_stack **stack_a, t_stack **stack_b, int pos_min)
 	if (pos_min > 0 && pos_min < 3)
 		loop_and_rotate(stack_a, pos_min, "stack_a");
 	else if (pos_min >= 3)
-		loop_and_reverse_rotate(stack_a, pos_min, "stack_a");
+		loop_and_reverse_rotate(stack_a, ft_stacksize(*stack_a) - pos_min, "stack_a");
 	push(stack_a, stack_b);
 	ft_printf("pb\n");
 }

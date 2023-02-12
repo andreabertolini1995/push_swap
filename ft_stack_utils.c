@@ -45,6 +45,7 @@ t_stack	*ft_stacknew(int data)
 	t_stack	*tmp;
 
 	tmp = malloc (sizeof(t_stack));
+	//ft_printf("malloc\n");
 	if (tmp == NULL)
 		return (NULL);
 	tmp->data = data;
@@ -60,18 +61,20 @@ void	remove_first_node(t_stack **stack)
 	first_node = *stack;
 	*stack = (*stack)->next;
 	free(first_node);
+	//ft_printf("free\n");
 }
 
-void	free_stack(t_stack *stack)
+void	free_stack(t_stack **stack)
 {
 	t_stack	*tmp;
 
-	tmp = stack;
-	while (stack != NULL)
+	tmp = *stack;
+	while ((*stack) != NULL)
 	{
-		tmp = stack->next;
-		free(stack);
-		stack = tmp;
+		tmp = (*stack)->next;
+		free(*stack);
+		//ft_printf("free\n");
+		(*stack) = tmp;
 	}
-	stack = NULL;
+	*stack = NULL;
 }

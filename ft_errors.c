@@ -33,6 +33,8 @@ int	ft_str_is_numeric(char *str)
 	int	i;
 
 	i = 0;
+	if (str[i] == '-')
+		i++;
 	while (str[i] != '\0')
 	{
 		if ((str[i] < 48) || (str[i] > 57))
@@ -58,15 +60,12 @@ void	error_handling(t_stack *stack)
 	}
 }
 
-static int	ft_strcmp(char *s1, char *s2)
+static int	limits_check(char *s1, char *s2, size_t i)
 {
-	size_t	i;
-
 	if (ft_strlen(s1) > ft_strlen(s2))
 		return (0);
 	else if (ft_strlen(s1) == ft_strlen(s2))
 	{
-		i = 0;
 		while (i < ft_strlen(s1))
 		{
 			if (s1[i] < s2[i])
@@ -87,7 +86,16 @@ void	check_input(int input_numbers, char **argv)
 	i = 1;
 	while (i <= input_numbers)
 	{
-		if (!ft_strcmp(argv[i], "2147483647") || !ft_str_is_numeric(argv[i]))
+		if (argv[i][0] == '-')
+		{
+			if (!limits_check(argv[i], "-2147483648", 1))
+			{
+				ft_printf("Error\n");
+				exit(0);
+			}
+		}
+		else if (!limits_check(argv[i], "2147483647", 0)
+			|| !ft_str_is_numeric(argv[i]))
 		{
 			ft_printf("Error\n");
 			exit(0);

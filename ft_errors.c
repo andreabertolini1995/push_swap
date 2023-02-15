@@ -51,7 +51,7 @@ void	error_handling(t_stack *stack)
 	ptr = stack;
 	while (ptr != NULL)
 	{
-		if (count_occurences(stack, stack->data) > 1)
+		if (count_occurences(stack, ptr->data) > 1)
 		{
 			ft_printf("Error\n");
 			exit(0);

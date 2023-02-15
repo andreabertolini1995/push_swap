@@ -57,78 +57,6 @@ static int	calc_num_chunks(int input_numbers)
 	return (num_chunks);
 }
 
-static int	count_occurences(t_stack *stack, int n)
-{
-	t_stack *ptr;
-	int		count;
-
-	count = 0;
-	ptr = stack;
-	while (ptr != NULL)
-	{
-		if (n == ptr->data)
-			count++;
-		ptr=ptr->next;
-	}
-	return (count);
-}
-
-static void	error_handling(int input_numbers, char **argv)
-{
-	int	i;
-	int	n;
-
-	i = 1;
-	while (i <= input_numbers)
-	{
-		if (count_occurences(stack, n) > 1)
-		{
-			printf("Error\n");
-			exit(0);
-		}
-		i++;
-	}
-	if (occurences)
-
-	i = 1;
-	while (i <= input_numbers)
-	{
-		n = ft_atoi(argv[i]);
-		ft_printf("%d\n", n);
-		if (n > INT_MAX || n < INT_MIN)
-		{
-			ft_printf("Error\n");
-			exit(0);
-		}
-		i++;
-	}
-}
-
-
-int	check_duplicates(int *arr)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < g_dict_size)
-	{
-		j = 0;
-		while (j < g_dict_size)
-		{
-			if (arr[i] == arr[j] && i != j && arr[i] != -1 && arr[j] != -1)
-			{
-				free(arr);
-				return (0);
-			}
-			j++;
-		}
-		i++;
-	}
-	free(arr);
-	return (1);
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -137,15 +65,15 @@ int	main(int argc, char **argv)
 	int		input_numbers;
 
 	input_numbers = argc - 1;
-	ft_printf("%d\n", input_numbers);
-	error_handling(input_numbers, argv);
 	if (input_numbers == 0 || input_numbers == 1)
 		exit(0);
 	else
 	{
+		check_input(input_numbers, argv);
 		stack_a = ft_stacknew(ft_atoi(argv[1]));
 		stack_b = NULL;
 		fill_stack_a(stack_a, argc, argv);
+		error_handling(stack_a);
 		if (input_numbers == 2 || input_numbers == 3 || input_numbers == 5)
 			sort_two_three_five(&stack_a, &stack_b, input_numbers);
 		else

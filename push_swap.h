@@ -119,7 +119,13 @@ int		condition_2(int rotations_stack_a, int rotations_stack_b,
 int		condition_3(int rotations_stack_a, int rotations_stack_b,
 			int rev_rotations_stack_a, int rev_rotations_stack_b);
 
-// Main and main function
+// Errors
+int		count_occurences(t_stack *stack, int n);
+void	error_handling(t_stack *stack);
+int		ft_str_is_numeric(char *str);
+void	check_input(int input_numbers, char **argv);
+
+// Main
 void	sort_stack(t_stack **stack_a, t_stack **stack_b,
 			int initial_size, int chunk_size);
 int		main(int argc, char **argv);

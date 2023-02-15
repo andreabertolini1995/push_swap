@@ -52,6 +52,20 @@ static int	find_number_to_push(int **ops, int min_num_ops)
 	return (ops[i][0]);
 }
 
+static void	free_arrays(int **ops, int *arr, int malloc_size)
+{
+	int	i;
+
+	i = 0;
+	while (i < malloc_size)
+	{
+		free(ops[i]);
+		i++;
+	}
+	free(arr);
+	free(ops);
+}
+
 static void	push_chunks(t_stack **stack_a, t_stack **stack_b,
 							int malloc_size, int chunk_threshold)
 {
@@ -79,8 +93,7 @@ static void	push_chunks(t_stack **stack_a, t_stack **stack_b,
 	else
 		rotate_or_reverse_rotate(stack_a, stack_b,
 			number_to_push, highest_lower);
-	free(arr);
-	free(ops);
+	free_arrays(ops, arr, malloc_size);
 }
 
 void	sort_stack(t_stack **stack_a, t_stack **stack_b,

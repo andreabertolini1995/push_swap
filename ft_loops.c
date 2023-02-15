@@ -20,7 +20,7 @@ void	loop_and_rotate(t_stack **stack, int lim, char *str)
 	while (i < lim)
 	{
 		rotate(stack);
-		if (!strcmp(str, "stack_a"))
+		if (!ft_strncmp(str, "stack_a", ft_strlen(str)))
 			ft_printf("ra\n");
 		else
 			ft_printf("rb\n");
@@ -36,7 +36,7 @@ void	loop_and_reverse_rotate(t_stack **stack, int lim, char *str)
 	while (i < lim)
 	{
 		reverse_rotate(stack);
-		if (!strcmp(str, "stack_a"))
+		if (!ft_strncmp(str, "stack_a", ft_strlen(str)))
 			ft_printf("rra\n");
 		else
 			ft_printf("rrb\n");

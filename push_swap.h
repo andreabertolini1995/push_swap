@@ -18,7 +18,6 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
-# include "./libft/libft.h"
 # include "./ft_printf/ft_printf.h"
 
 typedef struct s_stack
@@ -80,6 +79,7 @@ int		ft_max(int a, int b);
 int		ft_min(int a, int b);
 int		ft_in_range(int n, int min, int max);
 int		ft_min_in_array(int **ops, int malloc_size);
+int		ft_atoi(const char *str);
 
 // Cases
 void	only_rot(t_stack **stack_a, t_stack **stack_b,

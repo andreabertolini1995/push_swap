@@ -55,3 +55,32 @@ int	ft_min_in_array(int **ops, int malloc_size)
 	}
 	return (min);
 }
+
+int	ft_atoi(const char *str)
+{
+	int	sign;
+	int	final_number;
+	int	i;
+
+	sign = 1;
+	final_number = 0;
+	i = 0;
+	while (str[i] != '\0')
+	{
+		while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+			i++;
+		if (str[i] == '-' || str[i] == '+')
+		{
+			if (str[i] == '-')
+				sign = -1;
+			i++;
+		}
+		while ((str[i] >= '0') && (str[i] <= '9'))
+		{
+			final_number = final_number * 10 + (str[i] - 48);
+			i++;
+		}
+		return (final_number * sign);
+	}
+	return (final_number * sign);
+}

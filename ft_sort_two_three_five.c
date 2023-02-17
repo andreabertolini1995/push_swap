@@ -61,11 +61,6 @@ void	sort_five(t_stack **stack_a, t_stack **stack_b)
 		find_position_in_list(*stack_a, ft_min_in_list(*stack_a)));
 	find_min_and_push(stack_a, stack_b,
 		find_position_in_list(*stack_a, ft_min_in_list(*stack_a)));
-	if ((*stack_b)->data < (*stack_b)->next->data)
-	{
-		swap(stack_b);
-		ft_printf("sb\n");
-	}
 	sort_three(stack_a);
 	push_everything_back(stack_a, stack_b);
 }

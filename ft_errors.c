@@ -53,7 +53,8 @@ void	error_handling(t_stack *stack)
 	{
 		if (count_occurences(stack, ptr->data) > 1)
 		{
-			ft_printf("Error\n");
+			ft_putstr_fd("Error\n", 2);
+			free_stack(&stack);
 			exit(0);
 		}
 		ptr = ptr->next;
@@ -88,16 +89,17 @@ void	check_input(int input_numbers, char **argv)
 	{
 		if (argv[i][0] == '-')
 		{
-			if (!limits_check(argv[i], "-2147483648", 1))
+			if (!limits_check(argv[i], "-2147483648", 1)
+				|| !ft_str_is_numeric(argv[i]))
 			{
-				ft_printf("Error\n");
+				ft_putstr_fd("Error\n", 2);
 				exit(0);
 			}
 		}
 		else if (!limits_check(argv[i], "2147483647", 0)
 			|| !ft_str_is_numeric(argv[i]))
 		{
-			ft_printf("Error\n");
+			ft_putstr_fd("Error\n", 2);
 			exit(0);
 		}
 		i++;

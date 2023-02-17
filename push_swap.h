@@ -49,6 +49,7 @@ void	ft_print_list_data(t_stack *stack);
 void	ft_print_array(int *arr, int malloc_size);
 void	ft_print_rotations(int rotations_stack_a, int rev_rotations_stack_a,
 			int rotations_stack_b, int rev_rotations_stack_b);
+void	ft_putstr_fd(char *s, int fd);
 
 // Rotations and reverse rotations functions
 int		calc_num_rotations_stack_a(t_stack **stack_a,

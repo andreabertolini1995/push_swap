@@ -65,3 +65,8 @@ void	ft_print_rotations(int rotations_stack_a, int rev_rotations_stack_a,
 	ft_printf("Rev rotations stack_b: %d\n", rev_rotations_stack_b);
 	ft_printf("-----------------------------\n");
 }
+
+void	ft_putstr_fd(char *s, int fd)
+{
+	write(fd, s, ft_strlen(s));
+}

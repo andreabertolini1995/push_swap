@@ -44,24 +44,10 @@ static void	transform_stack(t_stack **stack_a)
 	}
 }
 
-static int	calc_num_chunks(int input_numbers)
-{
-	int	num_chunks;
-
-	if (input_numbers % 5 == 0)
-		num_chunks = 5;
-	else if (input_numbers % 2 == 0)
-		num_chunks = 2;
-	else
-		num_chunks = 1;
-	return (num_chunks);
-}
-
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		num_chunks;
 	int		input_numbers;
 
 	input_numbers = argc - 1;
@@ -79,8 +65,7 @@ int	main(int argc, char **argv)
 		else
 		{
 			transform_stack(&stack_a);
-			num_chunks = calc_num_chunks(input_numbers);
-			sort_stack(&stack_a, &stack_b, ft_stacksize(stack_a), num_chunks);
+			sort_stack(&stack_a, &stack_b, ft_stacksize(stack_a));
 		}
 	}
 	free_stack(&stack_a);

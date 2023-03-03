@@ -97,24 +97,14 @@ static void	push_chunks(t_stack **stack_a, t_stack **stack_b,
 }
 
 void	sort_stack(t_stack **stack_a, t_stack **stack_b,
-							int initial_size, int num_chunks)
+							int initial_size)
 {
-	int	chunk_size;
-	int	chunk_threshold;
 	int	malloc_size;
 
-	chunk_size = initial_size / num_chunks;
-	chunk_threshold = chunk_size;
-	while (num_chunks > 0)
+	while (ft_stacksize(*stack_a) > 0)
 	{
-		while (ft_stacksize(*stack_a) > (initial_size - chunk_threshold))
-		{
-			malloc_size = ft_stacksize(*stack_a)
-				- chunk_size * (num_chunks - 1);
-			push_chunks(stack_a, stack_b, malloc_size, chunk_threshold);
-		}
-		num_chunks -= 1;
-		chunk_threshold += chunk_size;
+		malloc_size = ft_stacksize(*stack_a);
+		push_chunks(stack_a, stack_b, malloc_size, initial_size);
 	}
 	put_higher_on_top(stack_b);
 	push_everything_back(stack_a, stack_b);

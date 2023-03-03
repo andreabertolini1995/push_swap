@@ -101,7 +101,7 @@ void	sort_two_three_five(t_stack **stack_a,
 			t_stack **stack_b, int input_numbers);
 
 // Fill arrays
-int		*fill_index_array(t_stack *stack_a, int chunk_threshold,
+int		*fill_index_array(t_stack *stack_a, int initial_size,
 			int malloc_size);
 int		**fill_ops_array(t_stack **stack_a, t_stack **stack_b,
 			int *arr, int malloc_size);
@@ -128,7 +128,7 @@ void	check_input(int input_numbers, char **argv);
 
 // Main
 void	sort_stack(t_stack **stack_a, t_stack **stack_b,
-			int initial_size, int chunk_size);
+							int initial_size);
 int		main(int argc, char **argv);
 
 #endif

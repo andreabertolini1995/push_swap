@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	*fill_index_array(t_stack *stack_a, int chunk_threshold,
+int	*fill_index_array(t_stack *stack_a, int initial_size,
 								int malloc_size)
 {
 	t_stack	*ptr;
@@ -28,7 +28,7 @@ int	*fill_index_array(t_stack *stack_a, int chunk_threshold,
 	count = 0;
 	while (ptr != NULL)
 	{
-		if (ptr->data <= chunk_threshold)
+		if (ptr->data <= initial_size)
 		{
 			arr[i] = count;
 			i++;

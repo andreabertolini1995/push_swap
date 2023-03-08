@@ -44,6 +44,23 @@ static void	transform_stack(t_stack **stack_a)
 	}
 }
 
+void	is_stack_sorted(t_stack *stack)
+{
+	int		count;
+	t_stack	*ptr;
+
+	ptr = stack;
+	count = 0;
+	while (ptr != NULL && ptr->next != NULL)
+	{
+		if (ptr->data < ptr->next->data)
+			count++;
+		ptr = ptr->next;
+	}
+	if (count == ft_stacksize(stack) - 1)
+		exit(0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -51,7 +68,7 @@ int	main(int argc, char **argv)
 	int		input_numbers;
 
 	input_numbers = argc - 1;
-	if (input_numbers == 0 || input_numbers == 1)
+	if (input_numbers == 0)
 		exit(0);
 	else
 	{
@@ -59,6 +76,7 @@ int	main(int argc, char **argv)
 		stack_a = ft_stacknew(ft_atoi(argv[1]));
 		stack_b = NULL;
 		fill_stack_a(stack_a, argc, argv);
+		is_stack_sorted(stack_a);
 		error_handling(stack_a);
 		if (input_numbers == 2 || input_numbers == 3 || input_numbers == 5)
 			sort_two_three_five(&stack_a, &stack_b, input_numbers);

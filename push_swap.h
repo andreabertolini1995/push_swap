@@ -128,7 +128,7 @@ void	check_input(int input_numbers, char **argv);
 
 // Main
 void	sort_stack(t_stack **stack_a, t_stack **stack_b,
-							int initial_size);
+			int initial_size);
 int		main(int argc, char **argv);
 
 #endif

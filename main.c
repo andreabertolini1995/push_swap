@@ -58,7 +58,10 @@ void	is_stack_sorted(t_stack *stack)
 		ptr = ptr->next;
 	}
 	if (count == ft_stacksize(stack) - 1)
+	{
+		free_stack(&stack);
 		exit(0);
+	}
 }
 
 int	main(int argc, char **argv)

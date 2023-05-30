@@ -31,12 +31,8 @@ I solved this optimisation problem by always choosing the *cheapest* action in t
 Following, a couple of videos, realised with the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer), showing visually the functioning of the algorithm.
 
 * with 100 random numbers:
-https://github.com/andreabertolini1995/push_swap/assets/51784826/8480a3c4-d4c5-460e-b6cf-0da7d4f7ad86
-
+https://github.com/andreabertolini1995/push_swap/assets/51784826/3676fdb2-82fa-4386-846f-749680a95dcf
 
 * with 500 random numbers:
-https://github.com/andreabertolini1995/push_swap/assets/51784826/62195851-9d24-4d86-95b6-3034be2e588c
-
-
-https://github.com/andreabertolini1995/push_swap/assets/51784826/3676fdb2-82fa-4386-846f-749680a95dcf
+https://github.com/andreabertolini1995/push_swap/assets/51784826/e70b2c6a-b610-49cb-a58f-385f389ae262
 

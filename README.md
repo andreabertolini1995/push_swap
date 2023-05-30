@@ -23,3 +23,17 @@ You have 2 stacks named a and b.
     * rra (reverse rotate a): Shift down all elements of stack a by 1. The last element becomes the first one.
     * rrb (reverse rotate b): Shift down all elements of stack b by 1. The last element becomes the first one.
     * rrr : rra and rrb at the same time.
+
+# My solution
+
+I solved this optimisation problem by always choosing the *cheapest* action in terms of number of operations performed.
+
+Following, a couple of videos, realised with the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer), showing visually the functioning of the algorithm.
+
+* with 100 random numbers:
+https://github.com/andreabertolini1995/push_swap/assets/51784826/8480a3c4-d4c5-460e-b6cf-0da7d4f7ad86
+
+
+* with 500 random numbers:
+https://github.com/andreabertolini1995/push_swap/assets/51784826/62195851-9d24-4d86-95b6-3034be2e588c
+

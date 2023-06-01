@@ -8,14 +8,14 @@
 
 This project is about sorting data on a stack, with a limited set of instructions, using the lowest possible number of actions. 
 
-The goal is to write a program in C which calculates and displays on the standard output the smallest program, made of [Push swap language instructions](#general-instructions),
+The goal is to write a program in C which calculates and displays on the standard output the smallest program, made of [push swap language instructions](#general-instructions),
 that sorts the integers received as arguments.
 
 ## General Instructions
 At the beginning:
-* 2 stacks named a and b are given.
-* The stack a contains a random amount of negative and/or positive numbers which cannot be duplicated.
-* The stack b is empty.
+* 2 stacks named a and b are given
+* The stack a contains a random amount of negative and/or positive numbers which cannot be duplicated
+* The stack b is empty
     
 The goal is to sort in ascending order numbers into stack a. To do so the following operations are at disposal:
 
@@ -47,15 +47,15 @@ Let's now have a look at some more details of the algorihtm.
 
 In order to choose, at each iteration, which number is the right candidate to be pushed from stack a to stack b, I go through each number in stack a and store the least number of operations required to move that number already in the correct spot at the top of stack b. 
 
-To do so, for any given *number to push* in stack a, its *highest lower* number from stack b is computed, i.e. the number that should appear at the top of stack b at the moment of the push, in order to move the number in the correct spot and implicitly sort the stack.
+To do so, for any given *number to push* in stack a, its *highest lower* number from stack b is computed, i.e. the number that should appear at the top of stack b at the moment of the push, in order to move the number in the correct spot and implicitly sort the stack. The number associated to the least number of operations is the winning candidate to be sent to stack b.
 
-In the image below, **7** is the number to push from stack a and **5** is the highest lower found in stack b.
+In the example in the image below, **7** is the number to push from stack a and **5** is the highest lower found in stack b.
 
 <p align="center">
-  <img src="https://github.com/andreabertolini1995/push_swap/assets/51784826/d7d398ba-b992-485d-bc96-6cd0e5028f88" width="300" height="200" />
+  <img src="https://github.com/andreabertolini1995/push_swap/assets/51784826/d7d398ba-b992-485d-bc96-6cd0e5028f88" width="500" height="333" />
 </p>
 
-At this point, there are four possibilities:
+Once the number to push has been identified, there are four possibilities:
 * rotate both stack a and stack b,
 * reverse rotate both stack a and stack b,
 * rotate stack a and reverse rotate stack b, and
@@ -75,19 +75,45 @@ $$ \min(
       )
    ) $$
  
-The number associated to the least number of operations is the winning candidate to be sent to stack b.
+## Run the code
 
-## Push Swap Visualizer
+To run the algorithm, it is first need to clone the repository and then to execute the Makefile.
+`
+git clone https://github.com/andreabertolini1995/push_swap.git
+make
+`
 
-To have a better understanding of the functioning of the algorithm, I used the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer), to visually see what is actually happening under the hood.
+Then, you can launch the executable followed by any sequence of positive or negative integers. The output will be the sequence of operations that have been performed to sort the stack in ascending order. As an example:
+`
+.push_swap 9 7 42 -68 452 0
+pb
+pb
+sb
+pb
+pb
+rb
+pb
+rrb
+pb
+rb
+rb
+pa
+pa
+pa
+pa
+pa
+pa
+`
 
-With 100 random numbers:
+To have a better understanding of the functioning of the algorithm and to visually see what is actually happening under the hood, you can also use the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer). 
+
+<!-- With 100 random numbers: -->
 
 https://github.com/andreabertolini1995/push_swap/assets/51784826/3676fdb2-82fa-4386-846f-749680a95dcf
 
-With 500 random numbers:
+<!-- With 500 random numbers:
 
-https://github.com/andreabertolini1995/push_swap/assets/51784826/e70b2c6a-b610-49cb-a58f-385f389ae262
+https://github.com/andreabertolini1995/push_swap/assets/51784826/e70b2c6a-b610-49cb-a58f-385f389ae262 -->
 
 ## Results
 
@@ -98,8 +124,4 @@ The results showed that this approach performs very well, being able to provide 
 <img width="351" alt="Screenshot 2023-06-01 at 13 25 50" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/9d91947f-6903-46fe-a440-a821ce336e75">
 
 <img width="361" alt="Screenshot 2023-06-01 at 13 26 20" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/f846db86-18d9-4cb5-b75f-f975282df270">
-
-
-
-
 

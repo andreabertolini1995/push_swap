@@ -55,7 +55,7 @@ Once the number to push has been identified, there are four possibilities:
 * rotate stack a and reverse rotate stack b, and
 * rotate stack b and reverse rotate stack a.
 
-The *cheapest* combinations of such operations is computes as follows:
+The *cheapest* combinations of such operations is computed as follows:
 
 $$ \min(
       \min(
@@ -73,7 +73,7 @@ $$ \min(
 In the example in the image below, **7** is the number to push from stack a and **5** is the highest lower found in stack b.
 
 <p align="center">
-  <img src="https://github.com/andreabertolini1995/push_swap/assets/51784826/a344860a-db82-471f-a9f9-f2bb7caf8fc3" width="500" height="333" />
+  <img src="https://github.com/andreabertolini1995/push_swap/assets/51784826/ab3ea202-0747-4123-8a6e-9b5b155a66ab" width="550" height="366" />
 </p>
 
 ## Run the code

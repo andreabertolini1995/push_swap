@@ -1,4 +1,4 @@
-# push_swap --
+# Push_swap
 
 The Push swap project is a very simple and a highly straightforward algorithm project: data must be sorted, given a set of integer values, 2 stacks, and a set of instructions
 to manipulate both stacks.
@@ -46,7 +46,11 @@ To do so, for any given *number to push* in stack a, its *highest lower* number 
 
 In the image below, **7** is the number to push from stack a and **5** is the highest lower found in stack b.
 
-<img width="791" alt="Screenshot 2023-06-01 at 11 31 10" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/bfca9e69-bfd9-4036-a107-86b7d940d42a">
+<img width="600" height="400" alt="Screenshot 2023-06-01 at 11 31 10" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/bfca9e69-bfd9-4036-a107-86b7d940d42a">
+
+<!-- <p align="center">
+  <img src="https://github.com/andreabertolini1995/Etherscan-registration-form-testing/blob/main/images/cucumber.png" width="400" height="110" />
+</p> -->
 
 At this point, there are four possibilities:
 * rotate both stack a and stack b,

@@ -73,19 +73,19 @@ $$ \min(
 In the example in the image below, **7** is the number to push from stack a and **5** is the highest lower found in stack b.
 
 <p align="center">
-  <img src="https://github.com/andreabertolini1995/push_swap/assets/51784826/d7d398ba-b992-485d-bc96-6cd0e5028f88" width="500" height="333" />
+  <img src="https://github.com/andreabertolini1995/push_swap/assets/51784826/a344860a-db82-471f-a9f9-f2bb7caf8fc3" width="500" height="333" />
 </p>
 
- 
 ## Run the code
 
 To run the algorithm, it is first need to clone the repository and then to execute the Makefile.
->
+```
 git clone https://github.com/andreabertolini1995/push_swap.git
 make
+```
 
 Then, you can launch the executable followed by any sequence of positive or negative integers. The output will be the sequence of operations that have been performed to sort the stack in ascending order. As an example:
->
+```
 .push_swap 9 7 42 -68 452 0
 pb
 pb
@@ -104,7 +104,7 @@ pa
 pa
 pa
 pa
-
+```
 
 To have a better understanding of the functioning of the algorithm and to visually see what is actually happening under the hood, you can also use the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer). 
 

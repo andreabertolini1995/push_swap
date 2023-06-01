@@ -13,14 +13,13 @@ that sorts the integers received as arguments.
 
 ## General Instructions
 At the beginning:
-    * 2 stacks named a and b are given.
-    * The stack a contains a random amount of negative and/or positive numbers which cannot be duplicated.
-    * The stack b is empty.
+* 2 stacks named a and b are given.
+* The stack a contains a random amount of negative and/or positive numbers which cannot be duplicated.
+* The stack b is empty.
     
-The goal is to sort in ascending order numbers into stack a. To do so you have the following operations at your disposal:
-<!-- replace with table here -->
+The goal is to sort in ascending order numbers into stack a. To do so the following operations are at disposal:
 
-| Instruction | Description |
+| Operation | Description |
 | ----------- | ----------- |
 | sa (swap a) | Swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements. |
 | sb (swap b) | Swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements. |
@@ -35,7 +34,7 @@ The goal is to sort in ascending order numbers into stack a. To do so you have t
 | rrr | rra and rrb at the same time. | 
 
 ## General approach
-This ptimisation problem can be solved in multipe diffeerent ways. The following are the high-level steps followed by my approach:
+This optimisation problem can be solved in multipe ways. The following are the high-level steps of my approach:
 * find the number in stack a that requires the least number of operations (in both stacks) to be pushed to stack b
 * push the number to stack b. Note that the number is always pushed in the correct position, so that stack a gets implicitly sorted while being moved to stack b
 * repeat this operation for all the numbers in stack a
@@ -46,7 +45,7 @@ This approach performs very well, being able to provide a relatively small amoun
 * less than 700 instructions for a stack of 100 numbers
 *  less than 5500 instructions for a stack of 500 numbers
 
-Let's have a look at some more details of the algorihtm.
+Let's now have a look at some more details of the algorihtm.
 
 ## What number to push and how?
 
@@ -79,8 +78,7 @@ $$ \min(
       rot_b + rrot_a
       )
    ) $$
-
-
+ 
 The number associated to the least number of operations is the winning candidate to be sent to stack b.
 
 ## Results

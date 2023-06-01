@@ -52,7 +52,7 @@ To do so, for any given *number to push* in stack a, its *highest lower* number 
 In the image below, **7** is the number to push from stack a and **5** is the highest lower found in stack b.
 
 <p align="center">
-  <img src="https://github.com/andreabertolini1995/push_swap/assets/51784826/bfca9e69-bfd9-4036-a107-86b7d940d42a" width="600" height="400" />
+  <img src="https://github.com/andreabertolini1995/push_swap/assets/51784826/d7d398ba-b992-485d-bc96-6cd0e5028f88" width="300" height="200" />
 </p>
 
 At this point, there are four possibilities:
@@ -61,7 +61,7 @@ At this point, there are four possibilities:
 * rotate stack a and reverse rotate stack b, and
 * rotate stack b and reverse rotate stack a.
 
-The *cheapest* combinations of such operations is given by the following formula:
+The *cheapest* combinations of such operations is computes as follows:
 
 $$ \min(
       \min(
@@ -77,21 +77,9 @@ $$ \min(
  
 The number associated to the least number of operations is the winning candidate to be sent to stack b.
 
-## Results
+## Push Swap Visualizer
 
-This approach performs very well, being able to provide a relatively small amount of instructions, such as:
-* less than 700 instructions for a stack of 100 numbers
-
-<img width="351" alt="Screenshot 2023-06-01 at 13 25 50" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/9d91947f-6903-46fe-a440-a821ce336e75">
-
-* less than 5500 instructions for a stack of 500 numbers
-
-<img width="361" alt="Screenshot 2023-06-01 at 13 26 20" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/f846db86-18d9-4cb5-b75f-f975282df270">
-
-These results have been obtained using the [push swap tester](https://github.com/louisabricot/push_swap_tester), a nice tool to quickly test the performance of the push swap algorithm on different stacks. 
-
-
-Following, a couple of videos, realised with the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer), showing visually the functioning of the algorithm.
+To have a better understanding of the functioning of the algorithm, I used the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer), to visually see what is actually happening under the hood.
 
 With 100 random numbers:
 
@@ -100,4 +88,18 @@ https://github.com/andreabertolini1995/push_swap/assets/51784826/3676fdb2-82fa-4
 With 500 random numbers:
 
 https://github.com/andreabertolini1995/push_swap/assets/51784826/e70b2c6a-b610-49cb-a58f-385f389ae262
+
+## Results
+
+To quickly test the performance of the push swap algorithm on different stacks I used the [push swap tester](https://github.com/louisabricot/push_swap_tester).
+
+The results showed that this approach performs very well, being able to provide a relatively small amount of instructions, such as less than 700 instructions for a stack of 100 numbers and less than 5500 instructions for a stack of 500 numbers.
+
+<img width="351" alt="Screenshot 2023-06-01 at 13 25 50" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/9d91947f-6903-46fe-a440-a821ce336e75">
+
+<img width="361" alt="Screenshot 2023-06-01 at 13 26 20" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/f846db86-18d9-4cb5-b75f-f975282df270">
+
+
+
+
 

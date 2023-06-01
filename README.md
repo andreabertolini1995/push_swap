@@ -35,15 +35,11 @@ The goal is to sort in ascending order numbers into stack a. To do so the follow
 
 ## General approach
 This optimisation problem can be solved in multipe ways. The following are the high-level steps of my approach:
-* find the number in stack a that requires the least number of operations (in both stacks) to be pushed to stack b
-* push the number to stack b. Note that the number is always pushed in the correct position, so that stack a gets implicitly sorted while being moved to stack b
-* repeat this operation for all the numbers in stack a
-* rotate (or reverse rotate) stack b to move its highest number at the top of the stack
-* push all the numbers back in stack a
-
-This approach performs very well, being able to provide a relatively small amount of instructions, such as:
-* less than 700 instructions for a stack of 100 numbers
-*  less than 5500 instructions for a stack of 500 numbers
+1. find the number in stack a that requires the least number of operations (in both stacks) to be pushed to stack b
+2. push the number to stack b. Note that the number is always pushed in the correct position, so that stack a gets implicitly sorted while being moved to stack b
+3. repeat this operation for all the numbers in stack a
+4. rotate (or reverse rotate) stack b to move its highest number at the top of the stack
+5. push all the numbers back in stack a
 
 Let's now have a look at some more details of the algorihtm.
 
@@ -83,13 +79,17 @@ The number associated to the least number of operations is the winning candidate
 
 ## Results
 
+This approach performs very well, being able to provide a relatively small amount of instructions, such as:
+* less than 700 instructions for a stack of 100 numbers
+*  less than 5500 instructions for a stack of 500 numbers
+
 Following, a couple of videos, realised with the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer), showing visually the functioning of the algorithm.
 
-* with 100 random numbers:
+With 100 random numbers:
 
 https://github.com/andreabertolini1995/push_swap/assets/51784826/3676fdb2-82fa-4386-846f-749680a95dcf
 
-* with 500 random numbers:
+With 500 random numbers:
 
 https://github.com/andreabertolini1995/push_swap/assets/51784826/e70b2c6a-b610-49cb-a58f-385f389ae262
 

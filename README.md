@@ -35,7 +35,7 @@ In other words, I go through each number in stack a and store the least number o
 
 The practical implementation is shown in the following formula:
 
-$$ \min(
+$$ \min( \\
       \min(
          \min(
             \max(rot_a, rot_b),

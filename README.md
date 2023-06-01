@@ -1,9 +1,9 @@
 # push_swap --
 
-The Push swap project is a very simple and a highly straightforward algorithm project: data must be sorted.
-You have at your disposal a set of integer values, 2 stacks, and a set of instructions
+The Push swap project is a very simple and a highly straightforward algorithm project: data must be sorted, given a set of integer values, 2 stacks, and a set of instructions
 to manipulate both stacks.
-The goal is to write a program in C called push_swap which calculates and displays on the standard output the smallest program, made of Push swap language instructions,
+
+The goal is to write a program in C which calculates and displays on the standard output the smallest program, made of [Push swap language instructions](#general-instructions),
 that sorts the integers received as arguments.
 
 # General Instructions
@@ -25,7 +25,7 @@ You have 2 stacks named a and b.
     * rrr : rra and rrb at the same time.
 
 # General approach
-I solved this optimisation problem by always choosing the *cheapest* action in terms of number of operations performed. The following are the high-level steps followed by my approach:
+This ptimisation problem can be solved in multipe diffeerent ways. The following are the high-level steps followed by my approach:
 * find the number in stack a that requires the least number of operations (in both stacks) to be pushed to stack b
 * push the number to stack b. Note that the number is always pushed in the correct position, so that stack a gets implicitly sorted while being moved to stack b
 * repeat this operation for all the numbers in stack a
@@ -36,25 +36,25 @@ This approach performs very well, being able to provide a relatively small amoun
 * less than 700 instructions for a stack of 100 numbers
 *  less than 5500 instructions for a stack of 500 numbers
 
-## What number to push?
+Let's have a look at some more details of the algorihtm.
 
-In other words, I go through each number in stack a and store the least number of operations required to move that number already in the correct spot at the top of stack b.
+## What number to push and how?
+
+In order to choose, at each iteration, which number is the right candidate to be pushed from stack a to stack b, I go through each number in stack a and store the least number of operations required to move that number already in the correct spot at the top of stack b. 
 
 To do so, for any given *number to push* in stack a, its *highest lower* number from stack b is computed, i.e. the number that should appear at the top of stack b at the moment of the push, in order to move the number in the correct spot and implicitly sort the stack.
 
-In the image above, **7** is the number to push from stack a and **5** is the highest lower found in stack b.
+In the image below, **7** is the number to push from stack a and **5** is the highest lower found in stack b.
 
 <img width="791" alt="Screenshot 2023-06-01 at 11 31 10" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/bfca9e69-bfd9-4036-a107-86b7d940d42a">
 
-## The least number of operations
-
-There are four possibilities:
+At this point, there are four possibilities:
 * rotate both stack a and stack b,
 * reverse rotate both stack a and stack b,
 * rotate stack a and reverse rotate stack b, and
 * rotate stack b and reverse rotate stack a.
 
-The practical implementation is shown in the following formula:
+The *cheapest* combinations of such operations is given by the following formula:
 
 $$ \min(
       \min(
@@ -71,6 +71,7 @@ $$ \min(
 
 The number associated to the least number of operations is the winning candidate to be sent to stack b.
 
+## Results
 
 Following, a couple of videos, realised with the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer), showing visually the functioning of the algorithm.
 

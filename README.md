@@ -81,7 +81,15 @@ The number associated to the least number of operations is the winning candidate
 
 This approach performs very well, being able to provide a relatively small amount of instructions, such as:
 * less than 700 instructions for a stack of 100 numbers
-*  less than 5500 instructions for a stack of 500 numbers
+
+<img width="351" alt="Screenshot 2023-06-01 at 13 25 50" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/9d91947f-6903-46fe-a440-a821ce336e75">
+
+* less than 5500 instructions for a stack of 500 numbers
+
+<img width="361" alt="Screenshot 2023-06-01 at 13 26 20" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/f846db86-18d9-4cb5-b75f-f975282df270">
+
+These results have been obtained using the [push swap tester](https://github.com/louisabricot/push_swap_tester), a nice tool to quickly test the performance of the push swap algorithm on different stacks. 
+
 
 Following, a couple of videos, realised with the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer), showing visually the functioning of the algorithm.
 

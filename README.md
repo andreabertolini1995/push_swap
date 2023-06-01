@@ -6,22 +6,32 @@
 
 <!-- ![push_swap](https://github.com/andreabertolini1995/push_swap/assets/51784826/14613e8c-635e-48ff-bc25-6d5f99c28b55) -->
 
-
-The Push swap project is a very simple and a highly straightforward algorithm project: data must be sorted, given a set of integer values, 2 stacks, and a set of instructions
-to manipulate both stacks.
+This project is about sorting data on a stack, with a limited set of instructions, using the lowest possible number of actions. 
 
 The goal is to write a program in C which calculates and displays on the standard output the smallest program, made of [Push swap language instructions](#general-instructions),
 that sorts the integers received as arguments.
 
-# General Instructions
-You have 2 stacks named a and b.
-* At the beginning:
+## General Instructions
+At the beginning:
+    * 2 stacks named a and b are given.
     * The stack a contains a random amount of negative and/or positive numbers which cannot be duplicated.
     * The stack b is empty.
-* The goal is to sort in ascending order numbers into stack a. To do so you have the following operations at your disposal:
-    * sa (swap a): Swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements.
-    * sb (swap b): Swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements.
-    * ss : sa and sb at the same time.
+    
+The goal is to sort in ascending order numbers into stack a. To do so you have the following operations at your disposal:
+<!-- replace with table here -->
+
+| Instruction | Description |
+| ----------- | ----------- |
+| sa (swap a) | Swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements. |
+| sb (swap b) | Swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements. |
+| ss | sa and sb at the same time. |
+| pa (push a) | Take the first element at the top of b and put it at the top of a. Do nothing if b is empty. |
+| pb (push b) | Swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements. |
+| sb (swap b) | Swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements. |
+| sa (swap a) | Swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements. |
+| sb (swap b) | Swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements. |
+    
+<!--    * ss : sa and sb at the same time.
     * pa (push a): Take the first element at the top of b and put it at the top of a. Do nothing if b is empty.
     * pb (push b): Take the first element at the top of a and put it at the top of b. Do nothing if a is empty.
     * ra (rotate a): Shift up all elements of stack a by 1. The first element becomes the last one.
@@ -29,9 +39,10 @@ You have 2 stacks named a and b.
     * rr : ra and rb at the same time.
     * rra (reverse rotate a): Shift down all elements of stack a by 1. The last element becomes the first one.
     * rrb (reverse rotate b): Shift down all elements of stack b by 1. The last element becomes the first one.
-    * rrr : rra and rrb at the same time.
+    * rrr : rra and rrb at the same time.  -->
+    
 
-# General approach
+## General approach
 This ptimisation problem can be solved in multipe diffeerent ways. The following are the high-level steps followed by my approach:
 * find the number in stack a that requires the least number of operations (in both stacks) to be pushed to stack b
 * push the number to stack b. Note that the number is always pushed in the correct position, so that stack a gets implicitly sorted while being moved to stack b

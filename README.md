@@ -29,7 +29,17 @@ You have 2 stacks named a and b.
 I solved this optimisation problem by always choosing the *cheapest* action in terms of number of operations performed.
 In other words, I go through each number in stack a and store the least number of operations required to move that number already in the correct spot at the top of stack b, which can be obtained from the following formula:
 
-$$ \min(\min(\min(\max(rot_a, rot_b), \max(rrot_a, rrot_b)), rot_a + rrot_b), rot_b + rrot_a)) $$
+$$ \min(
+      \min(
+         \min(
+            \max(rot_a, rot_b),
+            \max(rrot_a, rrot_b)
+            ),
+         rot_a + rrot_b
+         ),
+      rot_b + rrot_a
+      )
+   ) $$
 
 Following, a couple of videos, realised with the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer), showing visually the functioning of the algorithm.
 

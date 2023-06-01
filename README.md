@@ -14,8 +14,8 @@ that sorts the integers received as arguments.
 ## General Instructions
 At the beginning:
 * 2 stacks named **a** and **b** are given
-* The stack a contains a random amount of negative and/or positive numbers which cannot be duplicated
-* The stack b is empty
+* the stack a contains a random amount of negative and/or positive numbers which cannot be duplicated
+* the stack b is empty
     
 The goal is to sort in ascending order numbers into stack a. To do so the following operations are at disposal:
 
@@ -114,9 +114,13 @@ https://github.com/andreabertolini1995/push_swap/assets/51784826/e70b2c6a-b610-4
 
 To quickly test the performance of the push swap algorithm on different stacks I used the [push swap tester](https://github.com/louisabricot/push_swap_tester).
 
-The results showed that this approach performs very well, being able to provide a relatively small amount of instructions, such as less than 700 instructions for a stack of 100 numbers and less than 5500 instructions for a stack of 500 numbers.
+The results showed that this approach performs very well, being able to provide a small amount of instructions, such as: 
+
+* less than 700 instructions for a stack of 100 numbers 
 
 <img width="370" alt="Screenshot 2023-06-01 at 13 25 50" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/9d91947f-6903-46fe-a440-a821ce336e75">
+
+* less than 5500 instructions for a stack of 500 numbers.
 
 <img width="370" alt="Screenshot 2023-06-01 at 13 26 20" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/f846db86-18d9-4cb5-b75f-f975282df270">
 

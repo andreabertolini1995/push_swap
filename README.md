@@ -1,5 +1,12 @@
 # Push_swap
 
+<p align="center">
+  <img src="https://github.com/andreabertolini1995/push_swap/assets/51784826/14613e8c-635e-48ff-bc25-6d5f99c28b55" width="600" height="400" />
+</p>
+
+<!-- ![push_swap](https://github.com/andreabertolini1995/push_swap/assets/51784826/14613e8c-635e-48ff-bc25-6d5f99c28b55) -->
+
+
 The Push swap project is a very simple and a highly straightforward algorithm project: data must be sorted, given a set of integer values, 2 stacks, and a set of instructions
 to manipulate both stacks.
 

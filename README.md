@@ -33,17 +33,13 @@ The goal is to sort in ascending order numbers into stack a. To do so the follow
 | rrb (reverse rotate b) | Shift down all elements of stack b by 1. The last element becomes the first one. |
 | rrr | rra and rrb at the same time. | 
 
-## General approach
-This optimisation problem can be solved in multipe ways. The following are the high-level steps of my approach:
+## Solution
+This optimisation problem can be solved in multipe ways. The following are the high-level steps of the approach I pursued:
 1. find the number in stack a that requires the least number of operations (in both stacks) to be pushed to stack b
 2. push the number to stack b. Note that the number is always pushed in the correct position, so that stack a gets implicitly sorted while being moved to stack b
 3. repeat this operation for all the numbers in stack a
 4. rotate (or reverse rotate) stack b to move its highest number at the top of the stack
 5. push all the numbers back in stack a
-
-Let's now have a look at some more details of the algorihtm.
-
-## What number to push and how?
 
 In order to choose, at each iteration, which number is the right candidate to be pushed from stack a to stack b, I go through each number in stack a and store the least number of operations required to move that number already in the correct spot at the top of stack b. 
 

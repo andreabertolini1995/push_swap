@@ -13,7 +13,7 @@ that sorts the integers received as arguments.
 
 ## General Instructions
 At the beginning:
-* 2 stacks named **a** and **b** are given
+* two stacks named **a** and **b** are given
 * the stack a contains a random amount of negative and/or positive numbers which cannot be duplicated
 * the stack b is empty
     
@@ -35,7 +35,7 @@ The goal is to sort in ascending order numbers into stack a. To do so the follow
 
 ## Solution
 This optimisation problem can be solved in multipe ways. The following are the high-level steps of the approach I pursued:
-1. find the number in stack a that requires the least number of operations (in both stacks) to be pushed to stack b
+1. find the number in stack a that requires the least number of operations to be pushed to stack b
 2. push the number to stack b. Note that the number is always pushed in the correct position, so that stack a gets implicitly sorted while being moved to stack b
 3. repeat this operation for all the numbers in stack a
 4. rotate (or reverse rotate) stack b to move its highest number at the top of the stack

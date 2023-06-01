@@ -27,7 +27,13 @@ You have 2 stacks named a and b.
 # My solution
 
 I solved this optimisation problem by always choosing the *cheapest* action in terms of number of operations performed.
-In other words, I go through each number in stack a and store the least number of operations required to move that number already in the correct spot at the top of stack b, which can be obtained from the following formula:
+In other words, I go through each number in stack a and store the least number of operations required to move that number already in the correct spot at the top of stack b. There are four possibilities:
+* rotate both stacka a and stack b,
+* reverse rotate both stack a and stack b,
+* rotate stack a and reverse rotate stack b, and
+* rotate stack b and reverse rotate stack a.
+
+The practical implementation is shown in the following formula:
 
 $$ \min(
       \min(
@@ -40,6 +46,13 @@ $$ \min(
       rot_b + rrot_a
       )
    ) $$
+ 
+
+<img width="791" alt="Screenshot 2023-06-01 at 11 31 10" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/bfca9e69-bfd9-4036-a107-86b7d940d42a">
+
+
+The number associated to the least number of operations is the winning candidate to be sent to stack b.
+
 
 Following, a couple of videos, realised with the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer), showing visually the functioning of the algorithm.
 

@@ -1,4 +1,4 @@
-# Push Swap
+<h1 align="center"> Push Swap</h1>
 
 <p align="center">
   <img src="https://github.com/andreabertolini1995/push_swap/assets/51784826/14613e8c-635e-48ff-bc25-6d5f99c28b55" />

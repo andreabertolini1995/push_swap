@@ -24,14 +24,30 @@ You have 2 stacks named a and b.
     * rrb (reverse rotate b): Shift down all elements of stack b by 1. The last element becomes the first one.
     * rrr : rra and rrb at the same time.
 
-# My solution
+# General approach
+I solved this optimisation problem by always choosing the *cheapest* action in terms of number of operations performed. The following are the high-level steps followed by my approach:
+* find the number in stack a that requires the least number of operations (in both stacks) to be pushed to stack b
+* push the number to stack b. Note that the number is always pushed in the correct position, so that stack a gets implicitly sorted while being moved to stack b
+* repeat this operation for all the numbers in stack a
+* rotate (or reverse rotate) stack b to move its highest number at the top of the stack
+* push all the numbers back in stack a
 
-I solved this optimisation problem by always choosing the *cheapest* action in terms of number of operations performed.
-In other words, I go through each number in stack a and store the least number of operations required to move that number already in the correct spot at the top of stack b. To do so, for any given *number to push* in stack a, its *highest lower* number from stack b is computed, i.e. the number that should appear at the top of stack b at the moment of the push, in order to move the number in the correct spot and implicitly sort the stack. 
+This approach performs very well, being able to provide a relatively small amount of instructions, such as:
+* less than 700 instructions for a stack of 100 numbers
+*  less than 5500 instructions for a stack of 500 numbers
+
+## What number to push?
+
+In other words, I go through each number in stack a and store the least number of operations required to move that number already in the correct spot at the top of stack b.
+
+To do so, for any given *number to push* in stack a, its *highest lower* number from stack b is computed, i.e. the number that should appear at the top of stack b at the moment of the push, in order to move the number in the correct spot and implicitly sort the stack.
+
+In the image above, **7** is the number to push from stack a and **5** is the highest lower found in stack b.
 
 <img width="791" alt="Screenshot 2023-06-01 at 11 31 10" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/bfca9e69-bfd9-4036-a107-86b7d940d42a">
 
-In the image above, an example where **7** is the number to push from stack a and **5** is the highest lower found in stack b. 
+## The least number of operations
+
 There are four possibilities:
 * rotate both stack a and stack b,
 * reverse rotate both stack a and stack b,

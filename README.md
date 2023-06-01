@@ -102,13 +102,7 @@ pa
 
 To have a better understanding of the functioning of the algorithm and to visually see what is actually happening under the hood, you can also use the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer). Here an example with 100 random numbers:
 
-<!-- With 100 random numbers: -->
-
 https://github.com/andreabertolini1995/push_swap/assets/51784826/3676fdb2-82fa-4386-846f-749680a95dcf
-
-<!-- With 500 random numbers:
-
-https://github.com/andreabertolini1995/push_swap/assets/51784826/e70b2c6a-b610-49cb-a58f-385f389ae262 -->
 
 ## Results
 
@@ -119,6 +113,7 @@ The results showed that this approach performs very well, being able to provide 
 * less than 700 instructions for a stack of 100 numbers 
 
 <img width="370" alt="Screenshot 2023-06-01 at 13 25 50" src="https://github.com/andreabertolini1995/push_swap/assets/51784826/9d91947f-6903-46fe-a440-a821ce336e75">
+
 
 * less than 5500 instructions for a stack of 500 numbers.
 

@@ -49,12 +49,6 @@ In order to choose, at each iteration, which number is the right candidate to be
 
 To do so, for any given *number to push* in stack a, its *highest lower* number from stack b is computed, i.e. the number that should appear at the top of stack b at the moment of the push, in order to move the number in the correct spot and implicitly sort the stack. The number associated to the least number of operations is the winning candidate to be sent to stack b.
 
-In the example in the image below, **7** is the number to push from stack a and **5** is the highest lower found in stack b.
-
-<p align="center">
-  <img src="https://github.com/andreabertolini1995/push_swap/assets/51784826/d7d398ba-b992-485d-bc96-6cd0e5028f88" width="500" height="333" />
-</p>
-
 Once the number to push has been identified, there are four possibilities:
 * rotate both stack a and stack b,
 * reverse rotate both stack a and stack b,
@@ -74,17 +68,24 @@ $$ \min(
       rot_b + rrot_a
       )
    ) $$
+   
+  
+In the example in the image below, **7** is the number to push from stack a and **5** is the highest lower found in stack b.
+
+<p align="center">
+  <img src="https://github.com/andreabertolini1995/push_swap/assets/51784826/d7d398ba-b992-485d-bc96-6cd0e5028f88" width="500" height="333" />
+</p>
+
  
 ## Run the code
 
 To run the algorithm, it is first need to clone the repository and then to execute the Makefile.
-`
+>
 git clone https://github.com/andreabertolini1995/push_swap.git
 make
-`
 
 Then, you can launch the executable followed by any sequence of positive or negative integers. The output will be the sequence of operations that have been performed to sort the stack in ascending order. As an example:
-`
+>
 .push_swap 9 7 42 -68 452 0
 pb
 pb
@@ -103,7 +104,7 @@ pa
 pa
 pa
 pa
-`
+
 
 To have a better understanding of the functioning of the algorithm and to visually see what is actually happening under the hood, you can also use the fantastic [push swap visualizer](https://github.com/o-reo/push_swap_visualizer). 
 

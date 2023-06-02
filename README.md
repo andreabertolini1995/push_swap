@@ -69,7 +69,7 @@ In the example in the image below, **7** is the number to be pushed from stack a
 
 ## Run the code
 
-To run the algorithm, it is first need to clone the repository and then to execute the Makefile.
+To run the algorithm, it is first needed to clone the repository, move to its directory and then execute the Makefile.
 ```
 git clone https://github.com/andreabertolini1995/push_swap.git
 cd push_swap
@@ -78,7 +78,7 @@ make
 
 Then, you can launch the executable followed by any sequence of positive or negative integers. The output will be the sequence of operations that have been performed to sort the stack in ascending order. As an example:
 ```
-.push_swap 9 7 42 -68 452 0
+./push_swap 9 7 42 -68 452 0
 pb
 pb
 sb
